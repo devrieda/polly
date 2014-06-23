@@ -54,7 +54,7 @@ module PollyLtiEngine
     def xml_config
       host = "#{request.protocol}#{request.host_with_port}"
       url = "#{host}#{root_path}"
-      title = "Polly Lti Engine"
+      title = "Polly"
       tool_id = "polly_lti_engine"
       tc = IMS::LTI::ToolConfig.new(:title => title, :launch_url => url)
       tc.extend IMS::LTI::Extensions::Canvas::ToolConfig
