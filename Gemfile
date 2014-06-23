@@ -12,4 +12,5 @@ gem 'spring', group: :development
 gem 'unicorn'
 gem 'debugger', group: [:development, :test]
 gem 'react-rails', '~> 0.10.0.0'
+gem 'rack-proxy'
 

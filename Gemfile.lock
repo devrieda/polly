@@ -57,6 +57,8 @@ GEM
     multi_json (1.10.1)
     polyglot (0.3.5)
     rack (1.5.2)
+    rack-proxy (0.5.14)
+      rack
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.1)
@@ -130,6 +132,7 @@ DEPENDENCIES
   debugger
   jbuilder (~> 2.0)
   jquery-rails
+  rack-proxy
   rails (= 4.1.1)
   react-rails (~> 0.10.0.0)
   sass-rails (~> 4.0.3)
