@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class CanvasProxy < Rack::Proxy
   def initialize(app)
     @app = app
@@ -17,9 +19,13 @@ class CanvasProxy < Rack::Proxy
 
   def rewrite_env(env)
     request = Rack::Request.new(env)
-    if request.path =~ %r{^/api/v1}
+    if request.path =~ Regexp.new(CanvasProxy.config.prefix)
       # probably should refactor this from being hardcoded
-      env["HTTP_HOST"] = "localhost:3001"
+      env["HTTP_HOST"] = CanvasProxy.config.url
     end
+  end
+
+  def self.config
+    @@config ||= OpenStruct.new
   end
 end
