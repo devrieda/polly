@@ -1,0 +1,6 @@
+<%= image_tag 'polly.png' %>
+<ul>
+  <% @launch_params.keys.each do |k| %>
+    <li><%= k %>: <%= @launch_params[k]%></li>
+  <% end %>
+</ul>

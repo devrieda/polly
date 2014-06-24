@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  mount PollyLtiEngine::Engine => '/lti'
+
+  get "lti/config(.xml)" => 'lti#xml_config', as: :lti_xml_config
+  get "health_check" => "lti#health_check"
+  match "lti/launch", via: [:get, :post], as: :lti_launch
 
   root 'pages#index'
 end
