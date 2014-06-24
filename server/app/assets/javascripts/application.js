@@ -1,3 +1,1 @@
-//= require jquery
-//= require react
-//= require_tree .
+../../../../client/build/application.js

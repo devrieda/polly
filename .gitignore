@@ -5,15 +5,19 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.bundle
+server/.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+server/db/*.sqlite3
+server/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+server/log/*.log
+server/tmp
 
 # Ignore canvas_proxy
-/config/canvas_proxy.yml
+server/config/canvas_proxy.yml
+
+
+# Ignore build
+client/build/*.js
