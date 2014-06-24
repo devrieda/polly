@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
-var Router = require('react-nested-router').Router
-var env = require('../config/env')
+var Router = require('react-nested-router').Router;
+var env = require('../config/env');
 
 require('./router').renderComponent(document.querySelector('#polly'));
 
