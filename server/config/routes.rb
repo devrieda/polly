@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get "health_check" => "lti#health_check"
   match "lti/launch", via: [:get, :post], as: :lti_launch
 
-  root 'pages#index'
+  root 'lti#launch'
 end
