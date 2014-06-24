@@ -8,7 +8,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <div>
-        Polly!
+        Polly React App!
       </div>
     )
   }
