@@ -1,0 +1,22 @@
+/**
+ * _typography.css
+ * sizing, padding, etc. for all typography
+ */
+
+/* general typography */
+html {
+  color: $dark-grey;
+  background-color: $dim-grey;
+  font-family: "Helvetica Neue", arial, helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
