@@ -9,7 +9,7 @@ var env = require('../config/env')
 
 var App = React.createClass({
   render: function () {
-    return <div>{this.props.activeRoute}</div>
+    return <div className="app">{this.props.activeRoute}</div>
   }
 })
 
