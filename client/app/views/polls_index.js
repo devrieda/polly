@@ -1,11 +1,15 @@
 /** @jsx React.DOM */
 
-var React = require('react');
-var Router = require('react-nested-router').Router
-var Poll = require('../models/poll');
-
 var $ = require('jquery');
 var env = require('../../config/env');
+
+var React = require('react');
+var Router = require('react-nested-router').Router
+
+var Poll = require('../models/poll');
+
+var PollSubmissionForm = require('./poll_submission_form')
+
 
 module.exports = React.createClass({
 
@@ -43,7 +47,7 @@ module.exports = React.createClass({
       <div className="navslider">
         <div className="page">
           <div className="wrap">
-            <header className="titlebar">
+            <header className="title-bar">
               <div className="menu">
                 <a href="#">Menu</a>
               </div>
@@ -51,10 +55,7 @@ module.exports = React.createClass({
             </header>
 
             <div className="body">
-              <h2>Polly React App!</h2>
-              <ul>
-                {polls}
-              </ul>
+              <PollSubmissionForm />
             </div>
           </div>
         </div>

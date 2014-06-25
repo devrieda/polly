@@ -1,9 +1,12 @@
 .splash {
   max-width: 540px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 20px 20px;
   text-align: center;
 
+  h1 {
+    margin-top: 0;
+  }
   .parrot {
     height: 145px;
   }
