@@ -6,10 +6,9 @@ var Poll;
 
 Poll = React.createClass({
   propTypes: {
-    id: ReactPropTypes.number,
+    id: ReactPropTypes.string,
     question: ReactPropTypes.string,
-    description: ReactPropTypes.string,
-    created_at: ReactPropTypes.string
+    description: ReactPropTypes.string
   },
 
   getInitialState: function() {
