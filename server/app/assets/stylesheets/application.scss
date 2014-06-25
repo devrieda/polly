@@ -6,13 +6,10 @@
 
 @import 'shared/_color';
 @import 'shared/_typography';
-@import 'shared/_layout';
 @import 'shared/_buttons';
 
 @import 'components/splash';
-@import 'components/navslider';
-@import 'components/page';
-@import 'components/side_nav';
+@import 'components/drawer_layout';
 @import 'components/title_bar';
 @import 'components/poll_submission_form';
 

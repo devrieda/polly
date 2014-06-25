@@ -8,7 +8,7 @@ var Router = require('react-nested-router').Router
 
 var Poll = require('../models/poll');
 
-var PollSubmissionForm = require('./poll_submission_form')
+var DrawerLayout = require('./drawer_layout')
 
 
 module.exports = React.createClass({
@@ -44,28 +44,7 @@ module.exports = React.createClass({
     }
 
     return (
-      <div className="navslider">
-        <div className="page">
-          <div className="wrap">
-            <header className="title-bar">
-              <div className="menu">
-                <a href="#">Menu</a>
-              </div>
-              <h1>Polling</h1>
-            </header>
-
-            <div className="body">
-              <PollSubmissionForm />
-            </div>
-          </div>
-        </div>
-
-        <nav className="side-nav">
-          <ul>
-            <li>Poll 1</li>
-          </ul>
-        </nav>
-      </div>
+      <DrawerLayout />
     )
   }
 });
