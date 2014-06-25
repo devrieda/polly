@@ -1,15 +1,40 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var Link = require('react-nested-router').Link;
+var Router = require('react-nested-router').Router
+var env = require('../../config/env')
 
 module.exports = React.createClass({
 
+  isInFrame: function() {
+    return window !== window.top;
+  },
+
+  createBorderlessUrl: function() {
+    var parts = [];
+    parts.push(env.launch_presentation_return_url);
+    parts.push('/');
+    parts.push('external_tools/retrieve?');
+    parts.push('url=');
+    parts.push(env.URI);
+    parts.push('&borderless=1');
+    return parts.join('');
+  },
+
+  componentDidMount: function() {
+    if (!this.isInFrame()) {
+      Router.transitionTo('pollsIndex');
+    }
+  },
+
   render: function() {
+    var url = this.createBorderlessUrl();
     return (
       <div className="splash">
         <h1>Polly: Canvas Polls</h1>
+
         <img src='/assets/common/polly.png' className="parrot" />
+
         <p>
           Canvas Polls allows you to instantly assess student comprehension
           with live, in-class polling. Canvas Polls is free, easy-to-use, and
@@ -18,7 +43,7 @@ module.exports = React.createClass({
         </p>
 
         <div className="buttons">
-          <Link className="launch button" to='pollsIndex'>Launch</Link>
+          <a className='launch button' href={url} target='_top'>Launch</a>
         </div>
 
         <ul>

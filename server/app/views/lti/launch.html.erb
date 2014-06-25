@@ -1,2 +1,12 @@
+<script>
+  window.ENV = window.ENV || {};
+  window.ENV.URI = '<%= request.env["REQUEST_URI"] %>';
+  window.ENV.HOST = '<%= "#{request.protocol}#{request.host}:#{request.port}"%>';
+  <% @launch_params.keys.each do |k| %>
+    <% unless k.to_s.match(/oauth/) %>
+      window.ENV.<%= k %> = '<%= @launch_params[k] %>';
+    <% end %>
+  <% end %>
+</script>
 <%# react app will render into this div %>
 <div id='polly'></div>
