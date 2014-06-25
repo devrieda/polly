@@ -1,17 +1,44 @@
 /** @jsx React.DOM */
 
-var React = require('react')
+var React = require('react');
 var Router = require('react-nested-router').Router
+var Poll = require('../models/poll');
 
-var poll = require('../models/poll');
+var $ = require('jquery');
+var env = require('../../config/env');
 
 module.exports = React.createClass({
 
+  getInitialState: function() {
+    return { data: {polls: []} }
+  },
+
   componentWillMount: function() {
     // load polls
+    $.ajax({
+      dataType: 'json',
+      url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls",
+
+      success: function(data) {
+        this.setState({data: data['polls']});
+      }.bind(this),
+
+     error: function(xhr, status, err) {
+       console.error(env.API_HOST, status, err.toString());
+     }.bind(this)
+    });
   },
 
   render: function() {
+    var polls = [];
+    for (var i=0; i <= this.state.data.length; i++) {
+      var poll = this.state.data[i];
+      if (poll !== undefined) {
+        var question = poll.question;
+        polls.push(<Poll question={question} />);
+      }
+    }
+
     return (
       <div className="navslider">
         <div className="page">
@@ -25,7 +52,9 @@ module.exports = React.createClass({
 
             <div className="body">
               <h2>Polly React App!</h2>
-              <div>Your polls listed here...soon</div>
+              <ul>
+                {polls}
+              </ul>
             </div>
           </div>
         </div>
