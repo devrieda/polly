@@ -60,7 +60,7 @@ module.exports = React.createClass({
           </div>
         </div>
 
-        <nav className="sidenav">
+        <nav className="side-nav">
           <ul>
             <li>Poll 1</li>
           </ul>
