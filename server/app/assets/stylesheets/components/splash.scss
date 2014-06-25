@@ -15,6 +15,12 @@
     text-justify: inter-word;
     margin-bottom: 1.75em;
   }
+  .buttons {
+    overflow: visible;
+  }
+  .button {
+    float: none;
+  }
   ul {
     list-style: none;
     padding: 0;

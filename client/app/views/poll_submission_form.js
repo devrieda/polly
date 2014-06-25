@@ -8,33 +8,35 @@ module.exports = React.createClass({
     return (
       <form className="poll-submission-form">
         <h2>Who is your favorite Arrested Development character?</h2>
-        <ul>
+        <ul className="poll-choices">
           <li className="poll-choice">
             <label for="">
-              <input type="checkbox" id="choice_1" />
+              <input type="radio" name="poll_1" id="choice_1" />
               Tobias Fünke
             </label>
           </li>
           <li className="poll-choice">
             <label for="">
-              <input type="checkbox" id="choice_2" />
+              <input type="radio" name="poll_1" id="choice_2" />
               GOB Bluth
             </label>
           </li>
           <li className="poll-choice">
             <label for="">
-              <input type="checkbox" id="choice_3" />
+              <input type="radio" name="poll_1" id="choice_3" />
               George Michael Bluth
             </label>
           </li>
           <li className="poll-choice">
             <label for="">
-              <input type="checkbox" id="choice_4" />
+              <input type="radio" name="poll_1" id="choice_4" />
               Steve Holt
             </label>
           </li>
         </ul>
-        <a href="#" className="button">Submit Answer</a>
+        <div className="buttons">
+          <a href="#" className="button">Submit Answer</a>
+        </div>
       </form>
     )
   }

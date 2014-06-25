@@ -17,7 +17,7 @@ module.exports = React.createClass({
           accessible than off-the-shelf devices. 
         </p>
 
-        <div>
+        <div className="buttons">
           <Link className="launch button" to='pollsIndex'>Launch</Link>
         </div>
 

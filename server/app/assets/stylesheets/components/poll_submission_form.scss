@@ -2,17 +2,22 @@
   max-width: 540px;
   margin: 0 auto;
   padding: 20px 20px;
-
-  h2 {
-
-  }
-  ul {
-    list-style: none;
-  }
-  li {
-  }
 }
 
+.poll-choices {
+  border-bottom: 1px solid $light-grey;
+  padding: 0;
+  margin-bottom: 20px;
+  list-style: none;
+}
 .poll-choice {
+  border-top: 1px solid $light-grey;
 
+  label {
+    display: block;
+    padding: 20px 0;
+  }
+  input[type=radio] {
+    margin-right: 17px;
+  }
 }
