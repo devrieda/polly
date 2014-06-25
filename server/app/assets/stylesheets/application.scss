@@ -7,7 +7,9 @@
 @import 'shared/_color';
 @import 'shared/_typography';
 @import 'shared/_layout';
+@import 'shared/_buttons';
 
+@import 'components/splash';
 @import 'components/poll';
 
 
@@ -21,7 +23,6 @@
 html, body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
-  height: 100%;
   padding: 0;
   width: 100%;
 }

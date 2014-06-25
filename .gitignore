@@ -20,4 +20,4 @@ server/config/canvas_proxy.yml
 
 
 # Ignore build
-client/build/*.js
+client/build/*

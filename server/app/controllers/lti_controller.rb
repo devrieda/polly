@@ -16,7 +16,7 @@ class LtiController < ApplicationController
     tc.description = "Web based Canvas polling"
     tc.canvas_privacy_anonymous!
     tc.canvas_domain!(request.host)
-    tc.canvas_icon_url!("#{host}/assets/icon.png")
+    tc.canvas_icon_url!("#{host}/assets/common/icon.png")
     tc.canvas_text!(title)
     tc.set_ext_param('canvas.instructure.com', :tool_id, tool_id)
     tc.canvas_course_navigation!(enabled: true)

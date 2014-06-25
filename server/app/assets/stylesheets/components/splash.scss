@@ -1,0 +1,31 @@
+.splash {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+
+  h1 {
+
+  }
+  .parrot {
+    height: 145px;
+  }
+  p {
+    text-align: justify;
+    text-justify: inter-word;
+    margin-bottom: 1.75em;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 70px 0;
+  }
+  li {
+    display: inline;
+    margin: 0 10px;
+  }
+  li img {
+    vertical-align: middle;
+  }
+}
+
