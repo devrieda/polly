@@ -1,19 +1,21 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var Link = require('react-nested-router').Link;
 
 module.exports = React.createClass({
   propTypes: {
-    question: React.PropTypes.string
-  },
-
-  getInitialState: function() {
-    question: ''
+    question: React.PropTypes.string,
+    id: React.PropTypes.string
   },
 
   render: function() {
     return (
-      <li>{this.props.question}</li>
+      <li className="taken">
+        <Link to="poll" id="{this.props.id}">
+          {this.props.question}
+        </Link>
+      </li>
     )
   }
 });

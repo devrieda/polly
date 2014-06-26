@@ -14,21 +14,7 @@ module.exports = React.createClass({
 
         <h3>Open Polls</h3>
         <ul className="nav-polls open">
-          <li className="taken">
-            <Link to="poll" id="1">
-              Who is your favorite Arrested Development character?
-            </Link>
-          </li>
-          <li className="taken">
-            <Link to="poll" id="2">
-              What is your favorite color?
-            </Link>
-          </li>
-          <li className="">
-            <Link to="poll" id="3">
-              What soccer team is going to win the World Cup?
-            </Link>
-          </li>
+          {this.props.polls}
         </ul>
 
         <h3>Closed Polls</h3>

@@ -11,7 +11,9 @@ module.exports = React.createClass({
   },
 
   componentWillMount: function() {
-    this.setState({pollChoices: PollChoice.all(this.props.pollId)});
+    PollChoice.all(this.props.pollId, function(choices) {
+      this.setState({pollChoices: choices});
+    }.bind(this));
   },
 
   render: function() {

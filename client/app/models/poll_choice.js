@@ -3,41 +3,34 @@ var env = require('../../config/env');
 
 module.exports =  {
 
-  all: function(pollId) {
-    var pollChoices = [];
-
+  all: function(pollId, handler) {
     $.ajax({
       dataType: 'json',
       url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_choices",
 
       success: function(data) {
-        pollChoices = data['pollChoices'];
-      }.bind(this),
+        handler(data['pollChoices']);
+      },
 
       error: function(xhr, status, err) {
         console.error(env.API_HOST, status, err.toString());
-      }.bind(this)
+      }
     });
 
-    return pollChoices;
   },
 
-  find: function(pollId, pollChoiceId) {
-    var pollChoice;
-
+  find: function(pollId, pollChoiceId, handler) {
     $.ajax({
       dataType: 'json',
       url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_choices/" + pollChoiceId,
 
       success: function(data) {
-        pollChoice = data['poll_choices'][0];
-      }.bind(this),
+        handler(data['poll_choices'][0]);
+      },
 
       error: function(xhr, status, err) {
         console.error(env.API_HOST, status, err.toString());
-      }.bind(this)
+      }
     });
-
-    return pollChoice;
   }
 }

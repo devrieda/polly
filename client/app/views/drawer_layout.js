@@ -19,8 +19,9 @@ module.exports = React.createClass({
   },
 
   componentWillMount: function() {
-    // load polls
-    this.setState({polls: Poll.all()});
+    Poll.all(function(data) {
+      this.setState({polls: data});
+    }.bind(this));
   },
 
   render: function() {
@@ -33,7 +34,7 @@ module.exports = React.createClass({
         if (i == 0) {
           submissionForm = <PollSubmissionForm pollId={poll.id} pollQuestion={poll.question} />;
         }
-        polls.push(<PollNavLink question={poll.question} />);
+        polls.push(<PollNavLink question={poll.question} id={poll.id} />);
       }
     }
 
