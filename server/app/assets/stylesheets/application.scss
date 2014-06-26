@@ -28,6 +28,10 @@ html, body {
   width: 100%;
   height: 100%;
 }
+body {
+  overflow-x: hidden;
+  zoom: 1;
+}
 
 #polly, .app {
   height: 100%;

@@ -17,6 +17,9 @@
       background-color: $white;
     }
   }
+  .drawer-content.open {
+    left: 240px;
+  }
 }
 .drawer-nav {
   display: block;
