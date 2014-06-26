@@ -13,6 +13,16 @@ var transformData = function(data) {
   return user;
 }
 
+var endPointForId = function(id) {
+  var endpoint = [];
+  endpoint.push('/');
+  endpoint.push(env.API_NAMESPACE);
+  endpoint.push('/users/');
+  endpoint.push(id);
+  endpoint.push('/profile');
+  return endpoint.join('');
+}
+
 /*
  *  public interface
  */
@@ -23,7 +33,7 @@ User = function() {
 }
 
 User.find = function(id, context, callback) {
-  var url = '/api/v1/users/' + id + '/profile';
+  var url = endPointForId(id);
   if (cache.isValidFor(url)) {
     callback.call(context, transformData(cache.cacheFor(url)));
   } else {
