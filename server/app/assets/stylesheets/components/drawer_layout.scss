@@ -9,6 +9,7 @@
     left: 0;
     z-index: 2;
     background-color: $white;
+    transition: left 0.3s;
 
     .wrap {
       min-height: 100%;
@@ -19,5 +20,6 @@
   }
   .drawer-content.open {
     left: 280px;
+    transition: left 0.3s;
   }
 }
