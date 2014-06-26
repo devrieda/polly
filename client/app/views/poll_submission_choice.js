@@ -9,10 +9,9 @@ module.exports = React.createClass({
       <li className="poll-choice">
         <label htmlFor="">
           <input type="radio" name="poll_1" id="choice_{this.props.choiceId}" />
-          {this.props.choice_text}
+          {this.props.choiceText}
         </label>
       </li>
-    );
+    )
   }
 });
-
