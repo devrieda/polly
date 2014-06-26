@@ -14,20 +14,16 @@ ModelTransformer = function(model, mapping) {
 }
 
 ModelTransformer.prototype.transform = function(data) {
-  var transformer = this;
-
-  $.each(transformer.mapping, function(json_key, object_key) {
-    transformer.model[object_key] = data[json_key];
-  });
-  return transformer.model;
+  $.each(this.mapping, function(json_key, object_key) {
+    this.model[object_key] = data[json_key];
+  }.bind(this));
+  return this.model;
 }
 
 ModelTransformer.prototype.transformCollection = function(data) {
-  var transformer = this;
-
   return data.map(function(item) {
-    return transformer.transform(item);
-  });
+    return this.transform(item);
+  }.bind(this));
 }
 
 module.exports = ModelTransformer;
