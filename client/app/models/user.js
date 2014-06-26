@@ -8,7 +8,7 @@ var cache = new ModelCacher(5);
 
 var transformData = function(data) {
   var user = new User();
-  user.avatarUrl = env.user_image;
+  user.avatarUrl = data.avatar_url;
   user.displayName = data.sortable_name;
   return user;
 }
@@ -18,7 +18,7 @@ var endPointForId = function(id) {
   endpoint.push('/');
   endpoint.push(env.API_NAMESPACE);
   endpoint.push('/users/');
-  endpoint.push(id);
+  endpoint.push('self');
   endpoint.push('/profile');
   return endpoint.join('');
 }
