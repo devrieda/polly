@@ -1,0 +1,71 @@
+.drawer-nav {
+  display: block;
+  width: 280px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $bluegrey;
+  color: $white;
+
+  .profile {
+    float: left;
+    width: 100%;
+    background-color: $black-blue;
+
+    img {
+      float: left;
+      border-radius: 500px;
+      width: 33px;
+      height: 33px;
+      margin: 9px;
+      border: 1px solid $bluegrey;
+    }
+    p {
+      margin: 0;
+      float: left;
+      color: $light-bluegrey;
+      line-height: 50px;
+      font-size: 90%;
+    }
+  }
+
+  h3 {
+    float: left;
+    width: 100%;
+    margin: 0;
+    padding: 6px 8px;
+    background-color: $dark-bluegrey;
+    text-transform: uppercase;
+    color: $light-bluegrey;
+    font-size: 75%;
+    line-height: 1em;
+  }
+
+  ul {
+    float: left;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    float: left;
+    font-size: 80%;
+    line-height: 1.2em;
+    border-bottom: 1px solid $dark-bluegrey;
+  }
+  a {
+    float: left;
+    width: 100%;
+    color: $light-bluegrey;
+    padding: 20px 10px;
+
+    &:hover,
+    &.active {
+      color: $white;
+    }
+  }
+}

@@ -23,7 +23,7 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     if (!this.isInFrame()) {
-      Router.transitionTo('pollsIndex');
+      Router.transitionTo('polls');
     }
   },
 
