@@ -2,7 +2,7 @@
 
 var React = require('react');
 var Link = require('react-nested-router').Link;
-var UserProfile = require('../components/user_profile');
+var UserProfile = require('../views/user_profile');
 
 module.exports = React.createClass({
   render: function() {
