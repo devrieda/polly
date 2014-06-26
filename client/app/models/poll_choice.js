@@ -1,25 +1,43 @@
-/** @jsx React.DOM */
+var $ = require('jquery');
+var env = require('../../config/env');
 
-var React = require('react');
-var ReactPropTypes = React.PropTypes;
+module.exports =  {
 
-module.exports = React.createClass({
-  propTypes: {
-    id: ReactPropTypes.number,
-    text: ReactPropTypes.string,
-    position: ReactPropTypes.number
+  all: function(pollId) {
+    var pollChoices = [];
+
+    $.ajax({
+      dataType: 'json',
+      url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_choices",
+
+      success: function(data) {
+        pollChoices = data['pollChoices'];
+      }.bind(this),
+
+      error: function(xhr, status, err) {
+        console.error(env.API_HOST, status, err.toString());
+      }.bind(this)
+    });
+
+    return pollChoices;
   },
 
-  getInitialState: function() {
-    return {
-      text: '',
-      position: 0
-    }
-  },
+  find: function(pollId, pollChoiceId) {
+    var pollChoice;
 
-  render: function() {
-    return (
-      <li>{this.props.text}</li>
-    );
+    $.ajax({
+      dataType: 'json',
+      url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_choices/" + pollChoiceId,
+
+      success: function(data) {
+        pollChoice = data['poll_choices'][0];
+      }.bind(this),
+
+      error: function(xhr, status, err) {
+        console.error(env.API_HOST, status, err.toString());
+      }.bind(this)
+    });
+
+    return pollChoice;
   }
-});
+}

@@ -8,7 +8,7 @@ module.exports = React.createClass({
     return (
       <li className="poll-choice">
         <label htmlFor="">
-          <input type="radio" name="poll_1" id="choice_{this.props.choice_id}" />
+          <input type="radio" name="poll_1" id="choice_{this.props.choiceId}" />
           {this.props.choice_text}
         </label>
       </li>
