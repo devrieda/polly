@@ -1,22 +1,16 @@
 var $ = require('jquery');
 var env = require('../../config/env');
+var ModelCacher = require('./model_cacher');
 
 var User;
 
-var UserCache = {};
+var cache = new ModelCacher(5);
 
 var transformData = function(data) {
   var user = new User();
   user.avatarUrl = env.user_image;
   user.displayName = data.sortable_name;
   return user;
-}
-
-var cacheResults = function(url, data) {
-  UserCache[url] = {
-    date: new Date(),
-    result: data
-  };
 }
 
 /*
@@ -30,13 +24,14 @@ User = function() {
 
 User.find = function(id, context, callback) {
   var url = '/api/v1/users/' + id + '/profile';
-  if (UserCache[url]) {
-    callback.call(context, transformData(UserCache[url].result));
+  if (cache.isValidFor(url)) {
+    callback.call(context, transformData(cache.cacheFor(url)));
   } else {
     $.ajax({
       url: url,
       dataType: 'json',
       success: function(data) {
+        cache.cacheResults(url, data);
         callback.call(context, transformData(data));
       }.bind(this),
       error: function() {
@@ -46,4 +41,8 @@ User.find = function(id, context, callback) {
   }
 }
 
-module.exports = User
+User.flushCache = function() {
+  cache.flushCache();
+}
+
+module.exports = User;
