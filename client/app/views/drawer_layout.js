@@ -1,5 +1,6 @@
 /** @jsx React.DOM */
 
+var debounce = require('debounce');
 var React = require('react');
 var Router = require('react-nested-router').Router;
 
@@ -22,7 +23,7 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     Poll.all(this, this.loadPolls);
-    window.addEventListener("resize", this.closeDrawer);
+    window.addEventListener("resize", debounce(this.closeDrawer, 250));
   },
   loadPolls: function(data) {
     if (!this.props.params.id && data.length > 0) {
