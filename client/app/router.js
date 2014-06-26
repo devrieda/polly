@@ -16,8 +16,8 @@ var App = React.createClass({
 var router = Router(
   <Route handler={App}>
     <Route name="splash" path="/" handler={require('./views/splash')} />
-    <Route name="polls" path="/polls" handler={require('./views/polls_index')} />
-    <Route name="poll" path="/polls/:id" handler={require('./views/polls_index')} />
+    <Route name="polls" path="/polls" handler={require('./views/drawer_layout')} />
+    <Route name="poll" path="/polls/:id" handler={require('./views/drawer_layout')} />
   </Route>
 )
 
