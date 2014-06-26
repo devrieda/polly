@@ -1,35 +1,59 @@
 var $ = require('jquery');
 var env = require('../../config/env');
 
-module.exports = {
-  all: function(handler) {
+var Poll;
 
-    $.ajax({
-      dataType: 'json',
-      url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls",
+var transformData = function(data) {
+  var poll = new Poll();
+  poll.question = data.question;
+  poll.description = data.description;
+  poll.id = data.id;
 
-      success: function(data) {
-        handler(data.polls);
-      },
-
-      error: function(xhr, status, err) {
-        console.error(env.API_HOST, status, err.toString());
-      }
-    });
-  },
-
-  find: function(pollId, handler) {
-    $.ajax({
-      dataType: 'json',
-      url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId,
-
-      success: function(data) {
-        handler(data['polls'][0]);
-      },
-
-      error: function(xhr, status, err) {
-        console.error(env.API_HOST, status, err.toString());
-      }
-    });
-  }
+  return poll;
 }
+
+Poll = function() {
+  this.id = '';
+  this.question = '';
+  this.description = '';
+}
+
+Poll.all = function(callback) {
+  var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls";
+
+  $.ajax({
+    dataType: 'json',
+    url: url,
+
+    success: function(data) {
+      var polls = data.polls.map(function(poll) {
+        return transformData(poll);
+      });
+
+      callback(polls);
+    },
+
+    error: function(xhr, status, err) {
+      console.log("Problem requesting: " + url);
+    }
+  });
+}
+
+Poll.find = function(pollId, callback) {
+  var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls" + "/" + pollId;
+
+  $.ajax({
+    dataType: 'json',
+    url: url,
+
+    success: function(data) {
+      callback(transformData(data['polls'][0]));
+    },
+
+    error: function(xhr, status, err) {
+      console.error(url, status, err.toString());
+    }
+  });
+}
+
+module.exports = Poll;

@@ -10,7 +10,7 @@ var DrawerNav = require('./drawer_nav')
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {'open': false, 'polls': []}
+    return {'open': false, 'polls': []};
   },
 
   handleMenuClick: function() {
@@ -25,17 +25,11 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var polls = [];
-    var submissionForm;
+    var first_poll = this.state.polls[0];
+    var submissionForm = 'Loading...';
 
-    for (var i=0; i <= this.state.polls.length; i++) {
-      var poll = this.state.polls[i];
-      if (poll !== undefined) {
-        if (i == 0) {
-          submissionForm = <PollSubmissionForm pollId={poll.id} pollQuestion={poll.question} />;
-        }
-        polls.push(<PollNavLink question={poll.question} id={poll.id} />);
-      }
+    if(first_poll) {
+      submissionForm = <PollSubmissionForm pollId={first_poll.id} pollQuestion={first_poll.question} />
     }
 
     return (
@@ -55,7 +49,7 @@ module.exports = React.createClass({
           </div>
         </div>
 
-        <DrawerNav polls={polls} />
+        <DrawerNav polls={this.state.polls} />
       </div>
     )
   }

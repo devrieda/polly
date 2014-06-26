@@ -6,6 +6,10 @@ var UserProfile = require('../views/user_profile');
 
 module.exports = React.createClass({
   render: function() {
+    var polls = this.props.polls.map(function (poll) {
+      return <PollNavLink question={poll.question} id={poll.id} />;
+    });
+
     return (
       <nav className="drawer-nav">
         <UserProfile />
