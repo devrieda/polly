@@ -9,11 +9,12 @@ var DrawerNav = require('./drawer_nav')
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {'open': false, 'polls': []};
+    return {'drawer': (localStorage['drawer'] || "closed"), 'polls': []};
   },
 
   handleMenuClick: function() {
-    this.setState({'open': !this.state.open});
+    localStorage['drawer'] = localStorage['drawer'] == 'open' ? 'closed' : 'open';
+    this.setState({'drawer': localStorage['drawer']});
     return false;
   },
 
@@ -33,7 +34,7 @@ module.exports = React.createClass({
 
     return (
       <div className="drawer-layout">
-        <div className={'drawer-content' + (this.state.open ? ' open' : '')}>
+        <div className={'drawer-content ' + this.state.drawer}>
           <div className="wrap">
             <header className="title-bar">
               <div className="menu">
