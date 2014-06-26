@@ -1,7 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var PollChoice = require('../models/poll_choice')
 
 module.exports = React.createClass({
   render: function() {

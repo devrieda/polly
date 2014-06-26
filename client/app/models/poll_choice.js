@@ -10,11 +10,11 @@ var cache = new ModelCacher(5);
 PollChoice = function() {
   this.id = '';
   this.position = '';
-  this.description = '';
+  this.text = '';
 }
 var transformer = new ModelTransformer(PollChoice, { id: 'id',
-                                                           position: 'position',
-                                                           description: 'description' });
+                                                     position: 'position',
+                                                     text: 'text' });
 
 PollChoice.all = function(pollId, context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_choices";
