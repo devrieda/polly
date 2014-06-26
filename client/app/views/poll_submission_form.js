@@ -7,13 +7,13 @@ var PollSubmissionChoice = require('./poll_submission_choice');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {pollChoices: []}
+    return {pollChoices: []};
   },
 
   componentWillMount: function() {
-    PollChoice.all(this.props.pollId, function(choices) {
+    PollChoice.all(this.props.pollId, this, function(choices) {
       this.setState({pollChoices: choices});
-    }.bind(this));
+    });
   },
 
   render: function() {

@@ -29,19 +29,19 @@ Poll = function() {
   this.description = '';
 }
 
-Poll.all = function(callback) {
+Poll.all = function(context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls";
 
   if(cache.isValidFor(url)) {
-    callback(transformCollection(cache.cacheFor(url)));
+    callback.call(context, transformCollection(cache.cacheFor(url)));
   } else {
     $.ajax({
       dataType: 'json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data.polls);
-        callback(transformCollection(data.polls));
-      },
+        callback.call(context, transformCollection(data.polls));
+      }.bind(this),
       error: function(xhr, status, err) {
         console.log("Problem requesting: " + url);
       }
@@ -49,11 +49,11 @@ Poll.all = function(callback) {
   }
 }
 
-Poll.find = function(pollId, callback) {
+Poll.find = function(pollId, context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls" + "/" + pollId;
 
   if(cache.isValidFor(url)) {
-    callback(transformData(cache.cacheFor(url)));
+    callback.call(context, transformData(cache.cacheFor(url)));
   } else {
     $.ajax({
       dataType: 'json',
@@ -61,8 +61,8 @@ Poll.find = function(pollId, callback) {
 
       success: function(data) {
         cache.cacheResults(url, data['polls'][0]);
-        callback(transformData(data['polls'][0]));
-      },
+        callback.call(context, transformData(data['polls'][0]));
+      }.bind(this),
 
       error: function(xhr, status, err) {
         console.error(url, status, err.toString());
