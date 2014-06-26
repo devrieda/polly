@@ -8,11 +8,13 @@
 @import 'shared/_typography';
 @import 'shared/_buttons';
 
-@import 'components/splash';
-@import 'components/drawer_layout';
-@import 'components/drawer_nav';
-@import 'components/title_bar';
-@import 'components/poll_submission_form';
+@import 'components/spinner';
+
+@import 'views/splash';
+@import 'views/drawer_layout';
+@import 'views/drawer_nav';
+@import 'views/title_bar';
+@import 'views/poll_submission_form';
 
 
 * {
