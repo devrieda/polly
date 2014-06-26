@@ -29,8 +29,11 @@ module.exports = React.createClass({
 
   render: function() {
     var pollChoices = this.state.pollChoices.map(function(choice) {
-      return <PollSubmissionChoice key={choice.id} choiceText={choice.text} choiceId={choice.id} />
-    });
+      return <PollSubmissionChoice key={choice.id}
+                                pollId={this.props.pollId}
+                            choiceText={choice.text}
+                              choiceId={choice.id} />
+    }.bind(this));
 
     return (
       <form className="poll-submission-form">

@@ -6,8 +6,8 @@ module.exports = React.createClass({
   render: function() {
     return (
       <li className="poll-choice">
-        <label htmlFor="">
-          <input type="radio" name="poll_1" id="choice_{this.props.choiceId}" />
+        <label htmlFor={"choice_" + this.props.choiceId}>
+          <input type="radio" name={"poll_" + this.props.pollId} id={"choice_" + this.props.choiceId} />
           {this.props.choiceText}
         </label>
       </li>
