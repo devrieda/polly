@@ -40,7 +40,7 @@ module.exports = React.createClass({
     }.bind(this), 200);
   },
 
-  componentDidUnmount: function() {
+  componentWillUnmount: function() {
     window.removeEventListener("resize", this.closeDrawer);
   },
 
