@@ -9,7 +9,7 @@ var cache = new ModelCacher(5);
 var transformData = function(data) {
   var user = new User();
   user.avatarUrl = data.avatar_url;
-  user.displayName = data.sortable_name;
+  user.displayName = data.short_name;
   return user;
 }
 
