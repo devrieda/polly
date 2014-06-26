@@ -2,15 +2,13 @@
 
 var React = require('react');
 var Link = require('react-nested-router').Link;
+var UserProfile = require('../components/user_profile');
 
 module.exports = React.createClass({
   render: function() {
     return (
       <nav className="drawer-nav">
-        <div className="profile">
-          <img src="http://gravatar.com/avatar/99dc99eca024ae6da393c6d64a27ff3e?s=50" />
-          <p>Derek DeVries</p>
-        </div>
+        <UserProfile />
 
         <h3>Open Polls</h3>
         <ul className="nav-polls open">

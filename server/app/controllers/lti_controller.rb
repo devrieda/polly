@@ -13,6 +13,7 @@ class LtiController < ApplicationController
     tool_id = "polly"
     tc = IMS::LTI::ToolConfig.new(:title => title, :launch_url => url)
     tc.extend IMS::LTI::Extensions::Canvas::ToolConfig
+    tc.set_custom_param('canvas_user_id', '$Canvas.user.id')
     tc.description = "Web based Canvas polling"
     tc.canvas_privacy_anonymous!
     tc.canvas_domain!(request.host)
