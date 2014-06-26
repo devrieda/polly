@@ -24,10 +24,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var first_poll = this.state.polls[0];
+    var firstPoll = this.state.polls[0];
     var submissionForm = 'Loading...';
 
-    if(first_poll) {
+    if (firstPoll) {
       submissionForm = <PollSubmissionForm pollId={first_poll.id} pollQuestion={first_poll.question} />
     }
 
