@@ -1,7 +1,7 @@
 .spinner {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   top: 50%;
   left: 50%;
 }
@@ -11,7 +11,7 @@
   -moz-animation: spinner_spin 1.2s linear infinite;
   animation: spinner_spin 1.2s linear infinite;
   border-radius: 5px;
-  background-color: white;
+  background-color: $dark-bluegrey;
   position: absolute;
   width: 6.5px;
   height: 2.5px;
@@ -20,16 +20,16 @@
 }
 
 @keyframes "spinner_spin" {
- 0% { opacity: 1; }
- 100% { opacity: 0.15; }
+  0% { opacity: 1; }
+  100% { opacity: 0.15; }
 }
 
 @-moz-keyframes spinner_spin {
- 0% { opacity: 1; }
- 100% { opacity: 0.15; }
+  0% { opacity: 1; }
+  100% { opacity: 0.15; }
 }
 
 @-webkit-keyframes "spinner_spin" {
- 0% { opacity: 1; }
- 100% { opacity: 0.15; }
+  0% { opacity: 1; }
+  100% { opacity: 0.15; }
 }
