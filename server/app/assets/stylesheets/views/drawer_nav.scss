@@ -68,6 +68,9 @@
     &.active {
       color: $white;
     }
+    &.active {
+      cursor: default;
+    }
   }
   .question {
     float: left;
