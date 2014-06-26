@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="26px" height="18px" viewBox="0 0 26 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch Beta 3.0.4 (7976) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-hamburger</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Teacher-Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <path d="M1.00329963,0 C0.449192547,0 0,0.443353176 0,1.0093689 L0,2.9906311 C0,3.54809015 0.451278687,4 1.00329963,4 L24.9967004,4 C25.5508075,4 26,3.55664682 26,2.9906311 L26,1.0093689 C26,0.451909848 25.5487213,0 24.9967004,0 L1.00329963,0 Z M1.00329963,7 C0.449192547,7 0,7.44335318 0,8.0093689 L0,9.9906311 C0,10.5480902 0.451278687,11 1.00329963,11 L24.9967004,11 C25.5508075,11 26,10.5566468 26,9.9906311 L26,8.0093689 C26,7.45190985 25.5487213,7 24.9967004,7 L1.00329963,7 Z M1.00329963,14 C0.449192547,14 0,14.4433532 0,15.0093689 L0,16.9906311 C0,17.5480902 0.451278687,18 1.00329963,18 L24.9967004,18 C25.5508075,18 26,17.5566468 26,16.9906311 L26,15.0093689 C26,14.4519098 25.5487213,14 24.9967004,14 L1.00329963,14 Z" id="icon-hamburger" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
+    </g>
+</svg>
