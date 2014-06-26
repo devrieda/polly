@@ -22,21 +22,26 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     Poll.all(this, this.loadPolls);
+    window.addEventListener("resize", this.closeDrawer);
   },
   loadPolls: function(data) {
     if (!this.props.params.id && data.length > 0) {
       Router.replaceWith('poll', {id: data[0].id});
     }
     this.setState({polls: data, loaded: true});
-
-    // close the drawer after loading new things
-    if (this.state.drawer == 'open') {
-      setTimeout(this.closeDrawer.bind(this), 200);
-    }
+    this.closeDrawer();
   },
   closeDrawer: function() {
-    localStorage['drawer'] = 'closed';
-    this.setState({'drawer': localStorage['drawer']});
+    if (this.state.drawer == 'closed') { return; }
+
+    setTimeout(function() {
+      localStorage['drawer'] = 'closed';
+      this.setState({'drawer': localStorage['drawer']});
+    }.bind(this), 200);
+  },
+
+  componentDidUnmount: function() {
+    window.removeEventListener("resize", this.closeDrawer);
   },
 
   render: function() {
