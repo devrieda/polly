@@ -10,25 +10,25 @@ module.exports = React.createClass({
         <h2>Who is your favorite Arrested Development character?</h2>
         <ul className="poll-choices">
           <li className="poll-choice">
-            <label for="">
+            <label htmlFor="">
               <input type="radio" name="poll_1" id="choice_1" />
               Tobias Fünke
             </label>
           </li>
           <li className="poll-choice">
-            <label for="">
+            <label htmlFor="">
               <input type="radio" name="poll_1" id="choice_2" />
               GOB Bluth
             </label>
           </li>
           <li className="poll-choice">
-            <label for="">
+            <label htmlFor="">
               <input type="radio" name="poll_1" id="choice_3" />
               George Michael Bluth
             </label>
           </li>
           <li className="poll-choice">
-            <label for="">
+            <label htmlFor="">
               <input type="radio" name="poll_1" id="choice_4" />
               Steve Holt
             </label>
