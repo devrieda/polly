@@ -2,12 +2,13 @@
 
 var React = require('react');
 var Link = require('react-nested-router').Link;
-var UserProfile = require('../views/user_profile');
+var UserProfile = require('./user_profile');
+var DrawerNavLink = require('./drawer_nav_link');
 
 module.exports = React.createClass({
   render: function() {
     var polls = this.props.polls.map(function (poll) {
-      return <PollNavLink question={poll.question} id={poll.id} />;
+      return <DrawerNavLink question={poll.question} id={poll.id} />;
     });
 
     return (

@@ -4,7 +4,6 @@ var React = require('react');
 
 var Poll = require('../models/poll');
 
-var PollNavLink = require('./poll_nav_link');
 var PollSubmissionForm = require('./poll_submission_form')
 var DrawerNav = require('./drawer_nav')
 
