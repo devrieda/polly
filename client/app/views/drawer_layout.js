@@ -21,13 +21,22 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    // redirect to first poll if we're on the index page
-    Poll.all(this, function(data) {
-      if (!this.props.params.id && data.length > 0) {
-        Router.replaceWith('poll', {id: data[0].id});
-      }
-      this.setState({polls: data, loaded: true});
-    });
+    Poll.all(this, this.loadPolls);
+  },
+  loadPolls: function(data) {
+    if (!this.props.params.id && data.length > 0) {
+      Router.replaceWith('poll', {id: data[0].id});
+    }
+    this.setState({polls: data, loaded: true});
+
+    // close the drawer after loading new things
+    if (this.state.drawer == 'open') {
+      setTimeout(this.closeDrawer.bind(this), 200);
+    }
+  },
+  closeDrawer: function() {
+    localStorage['drawer'] = 'closed';
+    this.setState({'drawer': localStorage['drawer']});
   },
 
   render: function() {
@@ -45,7 +54,9 @@ module.exports = React.createClass({
           <div className="wrap">
             <header className="title-bar">
               <div className="menu">
-                <a href="#" onClick={this.handleMenuClick}>Menu</a>
+                <a href="#" onClick={this.handleMenuClick}>
+                  <span className="screenreader-only">Menu</span>&nbsp;
+                </a>
               </div>
               <h1>Polling</h1>
             </header>

@@ -10,8 +10,9 @@ var PollSubmissionChoice = require('./poll_submission_choice');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {poll: {question: "Loading..."}, 
-            pollChoices: [{text: ""}, {text: ""}]};
+    return {poll: {question: "Loading..."},
+            pollChoices: [{id: -1, text: ""},
+                          {id: -2, text: ""}]};
   },
 
   componentWillMount: function() {
@@ -27,8 +28,8 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var pollChoices = this.state.pollChoices.map(function(pollChoice) {
-      return <PollSubmissionChoice choiceText={pollChoice.text} choiceId={pollChoice.id} />
+    var pollChoices = this.state.pollChoices.map(function(choice) {
+      return <PollSubmissionChoice key={choice.id} choiceText={choice.text} choiceId={choice.id} />
     });
 
     return (
