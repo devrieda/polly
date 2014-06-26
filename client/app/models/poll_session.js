@@ -16,7 +16,7 @@ PollSession = function() {
   this.created_at = ''
 }
 
-var transformer = new ModelTransformer(new PollSession(), {
+var transformer = new ModelTransformer(PollSession, {
   course_id: 'courseId',
   course_section_id: 'courseSectionId',
   poll_id: 'pollId',

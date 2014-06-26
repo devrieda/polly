@@ -13,7 +13,7 @@ Poll = function() {
   this.description = '';
 }
 
-var transformer = new ModelTransformer(new Poll(), { question: 'question', 
+var transformer = new ModelTransformer(Poll, { question: 'question', 
                                                      description: 'description', 
                                                      id: 'id' });
 

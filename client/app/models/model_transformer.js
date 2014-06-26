@@ -14,10 +14,11 @@ ModelTransformer = function(model, mapping) {
 }
 
 ModelTransformer.prototype.transform = function(data) {
+  var instance = new this.model();
   $.each(this.mapping, function(json_key, object_key) {
-    this.model[object_key] = data[json_key];
+    instance[object_key] = data[json_key];
   }.bind(this));
-  return this.model;
+  return instance;
 }
 
 ModelTransformer.prototype.transformCollection = function(data) {

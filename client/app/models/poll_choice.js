@@ -12,7 +12,7 @@ PollChoice = function() {
   this.position = '';
   this.description = '';
 }
-var transformer = new ModelTransformer(new PollChoice(), { id: 'id',
+var transformer = new ModelTransformer(PollChoice, { id: 'id',
                                                            position: 'position',
                                                            description: 'description' });
 
