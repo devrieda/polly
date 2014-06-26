@@ -15,7 +15,6 @@ module.exports = React.createClass({
 
   componentWillMount: function() {
     User.find(env.canvasUserId, this, function(user) {
-      console.log("displayName: " + user.displayName);
       this.setState(user);
     });
   },
