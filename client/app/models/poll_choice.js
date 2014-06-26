@@ -9,7 +9,7 @@ module.exports =  {
       url: env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_choices",
 
       success: function(data) {
-        handler(data['pollChoices']);
+        handler(data['poll_choices']);
       },
 
       error: function(xhr, status, err) {
