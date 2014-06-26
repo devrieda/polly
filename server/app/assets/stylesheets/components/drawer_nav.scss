@@ -37,11 +37,11 @@
     float: left;
     width: 100%;
     margin: 0;
-    padding: 6px 8px;
+    padding: 5px 8px;
     background-color: $dark-bluegrey;
     text-transform: uppercase;
     color: $light-bluegrey;
-    font-size: 75%;
+    font-size: 70%;
     line-height: 1em;
   }
 
@@ -54,7 +54,7 @@
   li {
     float: left;
     width: 100%;
-    font-size: 80%;
+    font-size: 75%;
     line-height: 1.2em;
     border-bottom: 1px solid $dark-bluegrey;
   }
@@ -62,11 +62,32 @@
     float: left;
     width: 100%;
     color: $light-bluegrey;
-    padding: 20px 10px;
+    padding: 20px 10px 20px 32px;
 
     &:hover,
     &.active {
       color: $white;
     }
+  }
+  .question {
+    float: left;
+    width: 160px;
+  }
+  .date {
+    float: right;
+    font-size: 90%;
+  }
+
+  .available a {
+    background: url("/assets/icons/circle.png") 10px center no-repeat;
+    background-size: 8px 8px;
+  }
+  .closed a {
+    background: url("/assets/icons/chart-dark.png") 10px center no-repeat;
+    background-size: 12px 11px;
+  }
+  .shared a {
+    background: url("/assets/icons/chart.png") 10px center no-repeat;
+    background-size: 12px 11px;
   }
 }
