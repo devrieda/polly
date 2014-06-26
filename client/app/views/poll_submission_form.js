@@ -3,7 +3,7 @@
 var React = require('react');
 
 var PollChoice = require('../models/poll_choice');
-var PollChoiceForm = require('./poll_choice_form');
+var PollSubmissionChoice = require('./poll_submission_choice');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -20,9 +20,8 @@ module.exports = React.createClass({
     var pollChoices = [];
     for (var i=0; i <= this.state.pollChoices.length; i++) {
       var pollChoice = this.state.pollChoices[i];
-
       if (pollChoice !== undefined) {
-        pollChoices.push(<PollChoiceForm choiceText={pollChoice.text} choiceId={pollChoice.id} />);
+        pollChoices.push(<PollSubmissionChoice choiceText={pollChoice.text} choiceId={pollChoice.id} />);
       }
     }
 
