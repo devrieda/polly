@@ -1,15 +1,17 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var Router = require('react-nested-router').Router;
 
 var Poll = require('../models/poll');
 
-var PollSubmissionForm = require('./poll_submission_form')
-var DrawerNav = require('./drawer_nav')
+var PollSubmissionForm = require('./poll_submission_form');
+var NoPolls = require('./no_polls');
+var DrawerNav = require('./drawer_nav');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {'drawer': (localStorage['drawer'] || "closed"), 'polls': []};
+    return {drawer: (localStorage['drawer'] || "closed"), polls: [], loaded: false};
   },
 
   handleMenuClick: function() {
@@ -18,18 +20,23 @@ module.exports = React.createClass({
     return false;
   },
 
-  componentWillMount: function() {
+  componentDidMount: function() {
+    // redirect to first poll if we're on the index page
     Poll.all(this, function(data) {
-      this.setState({polls: data});
+      if (!this.props.params.id && data.length > 0) {
+        Router.replaceWith('poll', {id: data[0].id});
+      }
+      this.setState({polls: data, loaded: true});
     });
   },
 
   render: function() {
-    var firstPoll = this.state.polls[0];
-    var submissionForm = 'Loading...';
-
-    if (firstPoll) {
-      submissionForm = <PollSubmissionForm pollId={firstPoll.id} pollQuestion={firstPoll.question} />
+    var submissionForm;
+    if (this.state.loaded && this.state.polls.length == 0) {
+      submissionForm = <NoPolls />
+    } else {
+      submissionForm = <PollSubmissionForm pollId={this.props.params.id}
+                                           loaded={this.state.loaded} />
     }
 
     return (
