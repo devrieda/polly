@@ -28,7 +28,7 @@ module.exports = React.createClass({
     var submissionForm = 'Loading...';
 
     if (firstPoll) {
-      submissionForm = <PollSubmissionForm pollId={first_poll.id} pollQuestion={first_poll.question} />
+      submissionForm = <PollSubmissionForm pollId={firstPoll.id} pollQuestion={firstPoll.question} />
     }
 
     return (
