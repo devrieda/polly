@@ -2,26 +2,31 @@ var $ = require('jquery');
 var env = require('../../config/env');
 var ModelCacher = require('./model_cacher');
 var ModelTransformer = require('./model_transformer');
-
+var Poll = require('./poll');
 var PollSession;
 
 var cache = new ModelCacher(5);
 
 PollSession = function() {
   this.id = '';
-  this.course_id = '';
-  this.course_section_id = '';
-  this.poll_id = '';
-  this.is_published = '';
-  this.created_at = ''
+  this.courseId = '';
+  this.courseSectionId = '';
+  this.pollId = '';
+  this.isPublished = '';
+  this.createdAt = '';
+  this.hasSubmitted = '';
+  this.poll = '';
 }
 
 var transformer = new ModelTransformer(PollSession, {
+  id: 'id',
   course_id: 'courseId',
   course_section_id: 'courseSectionId',
   poll_id: 'pollId',
   is_published: 'isPublished',
-  created_at: 'createdAt'
+  created_at: 'createdAt',
+  has_submitted: 'hasSubmitted',
+  has_public_results: 'hasPublicResults'
 });
 
 PollSession.opened = function(context, callback) {
@@ -63,3 +68,5 @@ PollSession.closed = function(context, callback) {
     });
   }
 }
+
+module.exports = PollSession;

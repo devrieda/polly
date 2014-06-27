@@ -73,7 +73,7 @@ module.exports = React.createClass({
           </div>
         </div>
 
-        <DrawerNav polls={this.state.polls} />
+        <DrawerNav />
       </div>
     )
   }

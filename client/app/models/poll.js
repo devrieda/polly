@@ -39,7 +39,6 @@ Poll.all = function(context, callback) {
 
 Poll.find = function(pollId, context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls" + "/" + pollId;
-
   if(cache.isValidFor(url)) {
     callback.call(context, transformer.transform(cache.cacheFor(url)));
   } else {
