@@ -41,7 +41,8 @@ module.exports = React.createClass({
     submission.pollId = this.props.pollId;
     submission.pollSessionId = this.props.sessionId;
     submission.pollChoiceId = choiceId;
-    submission.save();
+    submission.save(this, function() {
+    });
 
     return false;
   },

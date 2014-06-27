@@ -64,7 +64,7 @@ PollSubmission.prototype.save = function(context, callback) {
 
 
     success: function(data) {
-      callback.call(context);
+      callback.call(context, data);
     },
 
     error: function(xhr, status, err) {
