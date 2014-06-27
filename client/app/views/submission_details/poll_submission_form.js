@@ -13,8 +13,7 @@ var Spinner = require('../../components/spinner.js');
 module.exports = React.createClass({
   getInitialState: function() {
     return {poll: {},
-            pollChoices: [{id: -1, text: ""},
-                          {id: -2, text: ""}]};
+            pollChoices: []};
   },
 
   componentWillMount: function() {
@@ -41,8 +40,7 @@ module.exports = React.createClass({
     submission.pollId = this.props.pollId;
     submission.pollSessionId = this.props.sessionId;
     submission.pollChoiceId = choiceId;
-    submission.save(this, function() {
-    });
+    submission.save(this, function() {});
 
     return false;
   },
