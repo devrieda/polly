@@ -27,7 +27,7 @@ module.exports = React.createClass({
   },
   loadPolls: function(data) {
     if (!this.props.params.pollId && data.length > 0) {
-      Router.replaceWith('poll', {id: data[0].id});
+      Router.replaceWith('poll', {pollId: data[0].id});
     }
     this.setState({polls: data, loaded: true});
     this.closeDrawer();
