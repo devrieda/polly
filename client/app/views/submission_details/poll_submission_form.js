@@ -72,16 +72,13 @@ module.exports = React.createClass({
 
   createLoadingSpinner: function() {
     return (
-      <div>
-        <div className='poll-submission-spinner'>
+      <div className='poll-submission-spinner'>
         <Spinner />
-        </div>
       </div>
     )
   },
 
   render: function() {
-    var result = (!!this.state.poll.question)? this.createSubmissionForm() : this.createLoadingSpinner();
-    return result;
+    return (!!this.state.poll.question) ? this.createSubmissionForm() : this.createLoadingSpinner();
   }
 });
