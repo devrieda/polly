@@ -1,9 +1,12 @@
 require "ims/lti"
 
 class LtiController < ApplicationController
-
   def launch
     @launch_params = params.reject!{ |k,v| ['controller','action'].include? k }
+
+    # unless session[:access_token]
+    #   redirect_to oauth_launch_path
+    # end
   end
 
   def xml_config

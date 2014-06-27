@@ -20,7 +20,7 @@ class CanvasProxy < Rack::Proxy
   def rewrite_env(env)
     request = Rack::Request.new(env)
     if request.path =~ Regexp.new(CanvasProxy.config.prefix)
-      # probably should refactor this from being hardcoded
+      env["HTTP_AUTHORIZATION"] = "Bearer #{CanvasProxy.config.api_key}"
       env["HTTP_HOST"] = CanvasProxy.config.url
     end
   end
