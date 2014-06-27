@@ -26,7 +26,7 @@ module.exports = React.createClass({
     window.addEventListener("resize", debounce(this.closeDrawer, 250));
   },
   loadPolls: function(data) {
-    if (!this.props.params.id && data.length > 0) {
+    if (!this.props.params.pollId && data.length > 0) {
       Router.replaceWith('poll', {id: data[0].id});
     }
     this.setState({polls: data, loaded: true});
@@ -50,7 +50,7 @@ module.exports = React.createClass({
     if (this.state.loaded && this.state.polls.length == 0) {
       submissionForm = <NoPolls />
     } else {
-      submissionForm = <PollSubmissionForm pollId={this.props.params.id}
+      submissionForm = <PollSubmissionForm pollId={this.props.params.pollId}
                                            loaded={this.state.loaded} />
     }
 
@@ -67,7 +67,7 @@ module.exports = React.createClass({
               <h1>Polling</h1>
             </header>
 
-            <div className="body">
+            <div className="content">
               {submissionForm}
             </div>
           </div>

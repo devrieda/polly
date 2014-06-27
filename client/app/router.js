@@ -17,7 +17,8 @@ var router = Router(
   <Route handler={App}>
     <Route name="splash" path="/" handler={require('./views/splash')} />
     <Route name="polls" path="/polls" handler={require('./views/drawer_layout')} />
-    <Route name="poll" path="/polls/:id" handler={require('./views/drawer_layout')} />
+    <Route name="poll" path="/polls/:pollId" handler={require('./views/drawer_layout')} />
+    <Route name="session" path="/polls/:pollId/sessions/:sessionId" handler={require('./views/drawer_layout')} />
   </Route>
 )
 

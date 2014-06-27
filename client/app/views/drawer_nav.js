@@ -18,7 +18,7 @@ module.exports = React.createClass({
         <h3>Open Polls</h3>
         <ul className="nav-polls open">
           <li className="available">
-            <Link to="poll" id="1">
+            <Link to="poll" pollId="1">
               <span className="question">
                 Who is your favorite Arrested Development character?
               </span>
@@ -28,7 +28,7 @@ module.exports = React.createClass({
             </Link>
           </li>
           <li className="">
-            <Link to="poll" id="2">
+            <Link to="poll" pollId="2">
               <span className="question">
                 What is your favorite color?
               </span>
@@ -38,7 +38,7 @@ module.exports = React.createClass({
             </Link>
           </li>
           <li className="">
-            <Link to="poll" id="3">
+            <Link to="poll" pollId="3">
               <span className="question">
                 What soccer team is going to win the World Cup?
               </span>
@@ -52,7 +52,7 @@ module.exports = React.createClass({
         <h3>Closed Polls</h3>
         <ul className="nav-polls closed">
           <li className="shared">
-            <Link to="poll" id="4">
+            <Link to="poll" pollId="4">
               <span className="question">
                 Which movie is the greatest of all-time?
               </span>
@@ -62,7 +62,7 @@ module.exports = React.createClass({
             </Link>
           </li>
           <li className="">
-            <Link to="poll" id="5">
+            <Link to="poll" pollId="5">
               <span className="question">
                 What are you going to get on the final
               </span>

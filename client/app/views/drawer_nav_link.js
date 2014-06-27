@@ -12,7 +12,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <li className="taken">
-        <Link to="poll" id="{this.props.id}">
+        <Link to="poll" pollId="{this.props.id}">
           {this.props.question}
         </Link>
       </li>
