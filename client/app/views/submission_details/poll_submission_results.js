@@ -1,13 +1,24 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var AllResults = require('./all_results');
-var UserChoice = require('./user_choice');
 
 module.exports = React.createClass({
-
   render: function() {
-    var hasPublicResults = this.props.submission.hasPublicResults;
-    return (hasPublicResults)? <AllResults /> : <UserChoice />;
+    var pollChoices = this.props.choices.map(function(choice) {
+      return (
+        <li key={choice.id} className="poll-choice">
+          <label htmlFor={"choice_" + choice.id}>{choice.text}</label>
+        </li>
+      )
+    }.bind(this));
+
+    return (
+      <form className="poll-submission-form">
+        <h2>{this.props.poll.question}</h2>
+        <ul className="poll-choices">
+          {pollChoices}
+        </ul>
+      </form>
+    )
   }
 });
