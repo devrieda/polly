@@ -22,8 +22,6 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     window.addEventListener("resize", debounce(this.closeDrawer, 250));
-  },
-  loadPolls: function(data) {
     this.closeDrawer();
   },
   closeDrawer: function() {
