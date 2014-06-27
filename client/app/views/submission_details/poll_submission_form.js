@@ -23,10 +23,11 @@ module.exports = React.createClass({
     this.setState({pollChoiceId: null})
 
     var submission = new PollSubmission();
-    submission.pollId = this.props.pollId;
-    submission.pollSessionId = this.props.sessionId;
+    submission.pollId = this.props.poll.id;
+    submission.pollSessionId = this.props.session.id;
     submission.pollChoiceId = choiceId;
-    submission.save(this, function() {});
+    submission.save(this, function() {
+    });
 
     return false;
   },

@@ -7,7 +7,7 @@ var Poll = require('../models/poll');
 var PollChoice = require('../models/poll_choice');
 
 var PollSubmissionForm = require('./submission_details/poll_submission_form');
-var PollSubmissionResults = require('./submission_details/poll_submission_results');
+var PollResults = require('./submission_details/poll_results');
 var NoPolls = require('./submission_details/no_polls');
 var Spinner = require('../components/spinner');
 
@@ -64,9 +64,9 @@ module.exports = React.createClass({
     }
 
     if (this.state.session.hasSubmitted) {
-      output = <PollSubmissionResults poll={this.state.poll}
-                                   session={this.state.session}
-                                   choices={this.state.choices} />
+      output = <PollResults poll={this.state.poll}
+                         session={this.state.session}
+                         choices={this.state.choices} />
     } else {
       output = <PollSubmissionForm poll={this.state.poll}
                                 session={this.state.session}

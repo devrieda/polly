@@ -2,14 +2,14 @@
 
 var React = require('react');
 
+var PollResultsChoice = require('./poll_results_choice');
+
 module.exports = React.createClass({
   render: function() {
     var pollChoices = this.props.choices.map(function(choice) {
-      return (
-        <li key={choice.id} className="poll-choice">
-          <label htmlFor={"choice_" + choice.id}>{choice.text}</label>
-        </li>
-      )
+      return <PollResultsChoice key={choice.id}
+                         choiceText={choice.text}
+                           choiceId={choice.id} />
     }.bind(this));
 
     return (
