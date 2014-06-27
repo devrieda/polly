@@ -45,6 +45,7 @@ PollSession.opened = function(context, callback) {
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_sessions']);
@@ -65,6 +66,7 @@ PollSession.closed = function(context, callback) {
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_sessions']);
@@ -85,6 +87,7 @@ PollSession.find = function(pollId, pollSessionId, context, callback) {
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_sessions'][0]);

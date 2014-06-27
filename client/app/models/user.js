@@ -41,6 +41,7 @@ User.find = function(id, context, callback) {
     $.ajax({
       url: url,
       dataType: 'json',
+      contentType: 'application/json',
       success: function(data) {
         cache.cacheResults(url, data);
         callback.call(context, transformData(data));

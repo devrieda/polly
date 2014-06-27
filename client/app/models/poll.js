@@ -24,6 +24,7 @@ Poll.all = function(context, callback) {
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data.polls);
@@ -43,6 +44,7 @@ Poll.find = function(pollId, context, callback) {
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
 
       success: function(data) {

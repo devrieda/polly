@@ -32,6 +32,7 @@ PollSubmission.find = function(pollId, pollSessionId, pollSubmissionId, context,
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_sessions'][0]);
@@ -50,18 +51,17 @@ PollSubmission.prototype.save = function(context, callback) {
                            "/polls/" + this.pollId +
                            "/poll_sessions/" + this.pollSessionId +
                            "/poll_submissions/";
-
   var payload = {
-    'poll_submissions': [
-      {'poll_choice_id': this.pollChoiceId}
-    ]
+    'poll_submissions': [{'poll_choice_id': this.pollChoiceId}]
   }
 
   $.ajax({
     dataType: 'json',
+    contentType: 'application/json',
     type: 'POST',
     url: url,
     data: JSON.stringify(payload),
+
 
     success: function(data) {
       callback.call(context);

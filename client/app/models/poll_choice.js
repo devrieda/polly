@@ -22,6 +22,7 @@ PollChoice.all = function(pollId, context, callback) {
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_choices']);
@@ -41,6 +42,7 @@ PollChoice.find = function(pollId, pollChoiceId, context, callback) {
   } else {
     $.ajax({
       dataType: 'json',
+      contentType: 'application/json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_choices'][0]);
