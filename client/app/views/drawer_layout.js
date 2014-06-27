@@ -35,6 +35,10 @@ module.exports = React.createClass({
     }.bind(this), 200);
   },
 
+  onSessionsLoaded: function() {
+    this.setState({loaded: true});
+  },
+
   componentWillUnmount: function() {
     window.removeEventListener("resize", this.closeDrawer);
   },
@@ -54,12 +58,13 @@ module.exports = React.createClass({
             </header>
 
             <div className="content">
-              <SubmissionDetails params={this.props.params} />
+              <SubmissionDetails params={this.props.params} loaded={this.state.loaded} />
             </div>
           </div>
         </div>
 
-        <DrawerNav pollId={this.props.params.pollId}/>
+        <DrawerNav pollId={this.props.params.pollId}
+                   onSessionsLoaded={this.onSessionsLoaded}/>
       </div>
     )
   }

@@ -29,6 +29,7 @@ module.exports = React.createClass({
   },
   loadClosedPollSessions: function() {
     PollSession.closed(this, function(sessions) {
+      this.props.onSessionsLoaded();
       this.setState({closedSessions: sessions});
     });
   },
