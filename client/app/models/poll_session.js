@@ -79,4 +79,24 @@ PollSession.closed = function(context, callback) {
   }
 }
 
+PollSession.find = function(pollSessionId, context, callback) {
+  var url = env.API_HOST + "/" + env.API_NAMESPACE + "/poll_sessions/" + pollSessionId;
+  if(cache.isValidFor(url)) {
+    callback.call(context, transformer.transform(cache.cacheFor(url)));
+  } else {
+    $.ajax({
+      dataType: 'json',
+      url: url,
+      success: function(data) {
+        cache.cacheResults(url, data['poll_sessions'][0]);
+        callback.call(context, transformer.transform(data['poll_sessions'][0]));
+      }.bind(this),
+
+      error: function(xhr, status, err) {
+        console.error(url, status, err.toString());
+      }
+    });
+  }
+}
+
 module.exports = PollSession;
