@@ -27,25 +27,40 @@ module.exports = React.createClass({
     });
   },
 
+  handleChoiceChange: function(value) {
+    this.setState({pollChoiceId: value});
+  },
+  handleSubmit: function() {
+    var choiceId = this.state.pollChoiceId;
+
+    console.log(choiceId)
+    // TODO - send poll submission. we need the session first though
+
+    this.setState({pollChoiceId: null})
+    return false;
+  },
+
   render: function() {
     var pollChoices = this.state.pollChoices.map(function(choice) {
       return <PollSubmissionChoice key={choice.id}
                                 pollId={this.props.pollId}
                             choiceText={choice.text}
-                              choiceId={choice.id} />
+                              choiceId={choice.id}
+                        onChoiceChange={this.handleChoiceChange} />
     }.bind(this));
 
+    var disabled = this.state.pollChoiceId ? "" : "disabled"
+
     return (
-      <form className="poll-submission-form">
+      <form className="poll-submission-form" onSubmit={this.handleSubmit}>
         <h2>{this.state.poll.question}</h2>
         <ul className="poll-choices">
           {pollChoices}
         </ul>
         <div className="buttons">
-          <a href="#" className="button">Submit Answer</a>
+          <input type="submit" className={"button " + disabled} value="Submit Answer" />
         </div>
       </form>
     )
   }
 });
-

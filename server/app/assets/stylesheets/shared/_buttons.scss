@@ -10,8 +10,15 @@
   padding: 10px 36px;
   font-size: 85%;
   font-weight: 500;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
 
   &:hover {
     text-decoration: none;
+  }
+  &.disabled {
+    background-color: $grey;
+    transition: background-color 0.3s;
   }
 }
