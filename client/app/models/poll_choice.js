@@ -4,11 +4,9 @@ var env = require('../../config/env');
 var ModelCacher = require('../modules/model_cacher');
 var ModelTransformer = require('../modules/model_transformer');
 
-var PollChoice;
-
 var cache = new ModelCacher(5);
 
-PollChoice = function() {
+var PollChoice = function() {
   this.id = '';
   this.position = '';
   this.text = '';

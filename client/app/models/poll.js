@@ -4,19 +4,17 @@ var env = require('../../config/env');
 var ModelCacher = require('../modules/model_cacher');
 var ModelTransformer = require('../modules/model_transformer');
 
-var Poll;
-
 var cache = new ModelCacher(5);
 
-Poll = function() {
+var Poll = function() {
   this.id = '';
   this.question = '';
   this.description = '';
 }
 
 var transformer = new ModelTransformer(Poll, { question: 'question', 
-                                                     description: 'description', 
-                                                     id: 'id' });
+                                               description: 'description', 
+                                               id: 'id' });
 
 Poll.all = function(context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls";

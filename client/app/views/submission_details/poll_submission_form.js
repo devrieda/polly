@@ -4,6 +4,8 @@ var React = require('react');
 
 var Poll = require('../../models/poll');
 var PollChoice = require('../../models/poll_choice');
+var PollSubmission = require('../../models/poll_submission');
+
 var SubmitButton = require('../../components/submit_button');
 var PollSubmissionChoice = require('./poll_submission_choice');
 var Spinner = require('../../components/spinner.js');
@@ -35,8 +37,11 @@ module.exports = React.createClass({
     // disable poll while we submit
     this.setState({pollChoiceId: null})
 
-    console.log(choiceId)
-    // TODO - send poll submission. we need the session first though
+    var submission = new PollSubmission();
+    submission.pollId = this.props.pollId;
+    submission.pollSessionId = this.props.sessionId;
+    submission.pollChoiceId = choiceId;
+    submission.save();
 
     return false;
   },

@@ -6,11 +6,10 @@ var ModelCacher = require('../modules/model_cacher');
 var ModelTransformer = require('../modules/model_transformer');
 
 var Poll = require('./poll');
-var PollSession;
 
 var cache = new ModelCacher(5);
 
-PollSession = function() {
+var PollSession = function() {
   this.id = '';
   this.courseId = '';
   this.courseSectionId = '';
