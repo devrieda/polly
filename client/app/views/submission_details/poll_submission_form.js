@@ -66,7 +66,13 @@ module.exports = React.createClass({
   },
 
   createLoadingSpinner: function() {
-    return <Spinner />
+    return (
+      <div>
+        <div className='poll-submission-spinner'>
+        <Spinner />
+        </div>
+      </div>
+    )
   },
 
   render: function() {
