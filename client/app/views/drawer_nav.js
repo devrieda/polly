@@ -1,11 +1,13 @@
 /** @jsx React.DOM */
 
 var React = require('react');
+var Router = require('react-nested-router').Router;
 var Link = require('react-nested-router').Link;
-var UserProfile = require('./user_profile');
-var DrawerNavLink = require('./drawer_nav_link');
 
 var PollSession = require('../models/poll_session');
+
+var UserProfile = require('./user_profile');
+var DrawerNavLink = require('./drawer_nav_link');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -14,6 +16,12 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     PollSession.opened(this, function(sessions) {
+      if (!this.props.pollId && sessions.length > 0) {
+        return Router.replaceWith('session', {
+          pollId: sessions[0].pollId, 
+          sessionId: sessions[0].id
+        });
+      }
       this.setState({openedSessions: sessions});
     });
 

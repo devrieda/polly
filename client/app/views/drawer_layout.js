@@ -22,14 +22,9 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    Poll.all(this, this.loadPolls);
     window.addEventListener("resize", debounce(this.closeDrawer, 250));
   },
   loadPolls: function(data) {
-    if (!this.props.params.pollId && data.length > 0) {
-      Router.replaceWith('poll', {pollId: data[0].id});
-    }
-    this.setState({polls: data, loaded: true});
     this.closeDrawer();
   },
   closeDrawer: function() {
@@ -51,6 +46,7 @@ module.exports = React.createClass({
       submissionForm = <NoPolls />
     } else {
       submissionForm = <PollSubmissionForm pollId={this.props.params.pollId}
+                                        sessionId={this.props.params.sessionId}
                                            loaded={this.state.loaded} />
     }
 
@@ -73,7 +69,7 @@ module.exports = React.createClass({
           </div>
         </div>
 
-        <DrawerNav />
+        <DrawerNav pollId={this.props.params.pollId}/>
       </div>
     )
   }

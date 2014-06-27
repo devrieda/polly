@@ -23,7 +23,8 @@ module.exports = React.createClass({
     var classes = [is_available, is_shared].join(' ');
     return (
       <li className={classes}>
-        <Link to="poll" pollId={this.props.pollId}>
+        <Link to="session" pollId={this.props.pollId}
+                        sessionId={this.props.session.id}>
           <span className="question">
             {this.state.poll.question}
           </span>
