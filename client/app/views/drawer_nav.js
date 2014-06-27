@@ -31,11 +31,25 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var openPolls = this.state.openedSessions.map(function(session) {
+    // easier than doing it in the sortByDate function, don't judge me
+    // (makes a little more sense here as well)
+    var submittedOpenSessions =  this.state.openedSessions.filter(function(session) {
+      return session.hasSubmitted;
+    });
+
+    var nonSubmittedOpenSessions = this.state.openedSessions.filter(function(session) {
+      return !session.hasSubmitted;
+    });
+
+    submittedOpenSessions = submittedOpenSessions.map(function(session) {
       return <DrawerNavLink key={session.id} session={session} pollId={session.pollId} />
     });
 
-    var closedPolls = this.state.closedSessions.map(function(session) {
+    nonSubmittedOpenSessions = nonSubmittedOpenSessions.map(function(session) {
+      return <DrawerNavLink key={session.id} session={session} pollId={session.pollId} />
+    });
+
+    var closedSessions = this.state.closedSessions.map(function(session) {
       return <DrawerNavLink key={session.id} session={session} pollId={session.pollId} />
     });
 
@@ -45,12 +59,13 @@ module.exports = React.createClass({
 
         <h3>Open Polls</h3>
         <ul className="nav-polls open">
-          {openPolls}
+          {nonSubmittedOpenSessions}
+          {submittedOpenSessions}
         </ul>
 
         <h3>Closed Polls</h3>
         <ul className="nav-polls closed">
-          {closedPolls}
+          {closedSessions}
         </ul>
       </nav>
     )

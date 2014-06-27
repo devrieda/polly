@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 
+var moment = require('moment');
 var React = require('react');
 var Link = require('react-nested-router').Link;
-
 var Poll = require('../models/poll');
 
 module.exports = React.createClass({
@@ -18,7 +18,7 @@ module.exports = React.createClass({
 
   render: function() {
     var is_available = !this.props.session.hasSubmitted ? 'available' : ''
-    var is_shared = this.props.session.hasPublicResults ? 'shared' : ''
+    var is_shared = (this.props.session.hasPublicResults && this.props.session.isPublished) ? 'shared' : ''
 
     var classes = [is_available, is_shared].join(' ');
     return (
@@ -29,7 +29,7 @@ module.exports = React.createClass({
             {this.state.poll.question}
           </span>
           <span className="date">
-            {this.props.session.createdAt}
+            {moment(this.props.session.createdAt).fromNow()}
           </span>
         </Link>
       </li>

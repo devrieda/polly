@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var moment = require('moment');
 var env = require('../../config/env');
 var ModelCacher = require('./model_cacher');
 var ModelTransformer = require('./model_transformer');
@@ -18,6 +19,13 @@ PollSession = function() {
   this.poll = '';
 }
 
+var sortByDate = function(sessions) {
+  sessions.sort(function(a, b) {
+    return moment(b.createdAt).isAfter(a.createdAt);
+  });
+  return sessions;
+}
+
 var transformer = new ModelTransformer(PollSession, {
   id: 'id',
   course_id: 'courseId',
@@ -32,14 +40,14 @@ var transformer = new ModelTransformer(PollSession, {
 PollSession.opened = function(context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE + "/poll_sessions/opened";
   if(cache.isValidFor(url)) {
-    callback.call(context, transformer.transformCollection(cache.cacheFor(url)));
+    callback.call(context, sortByDate(transformer.transformCollection(cache.cacheFor(url))));
   } else {
     $.ajax({
       dataType: 'json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_sessions']);
-        callback.call(context, transformer.transformCollection(data['poll_sessions']));
+        callback.call(context, sortByDate(transformer.transformCollection(data['poll_sessions'])));
       }.bind(this),
 
       error: function(xhr, status, err) {
@@ -52,14 +60,14 @@ PollSession.opened = function(context, callback) {
 PollSession.closed = function(context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE + "/poll_sessions/closed";
   if(cache.isValidFor(url)) {
-    callback.call(context, transformer.transformCollection(cache.cacheFor(url)));
+    callback.call(context, sortByDate(transformer.transformCollection(cache.cacheFor(url))));
   } else {
     $.ajax({
       dataType: 'json',
       url: url,
       success: function(data) {
         cache.cacheResults(url, data['poll_sessions']);
-        callback.call(context, transformer.transformCollection(data['poll_sessions']));
+        callback.call(context, sortByDate(transformer.transformCollection(data['poll_sessions'])));
       }.bind(this),
 
       error: function(xhr, status, err) {
