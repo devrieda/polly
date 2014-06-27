@@ -28,6 +28,7 @@ module.exports = React.createClass({
     if (this.state.drawer == 'closed') { return; }
 
     setTimeout(function() {
+      if (!this.isMounted()) { return; }
       localStorage['drawer'] = 'closed';
       this.setState({'drawer': localStorage['drawer']});
     }.bind(this), 200);
