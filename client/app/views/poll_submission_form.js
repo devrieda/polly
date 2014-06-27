@@ -5,7 +5,8 @@ var React = require('react');
 var Poll = require('../models/poll');
 var PollChoice = require('../models/poll_choice');
 
-var Spinner = require('../components/spinner');
+var SubmitButton = require('../components/submit_button');
+
 var PollSubmissionChoice = require('./poll_submission_choice');
 
 module.exports = React.createClass({
@@ -33,10 +34,12 @@ module.exports = React.createClass({
   handleSubmit: function() {
     var choiceId = this.state.pollChoiceId;
 
+    // disable poll while we submit
+    this.setState({pollChoiceId: null})
+
     console.log(choiceId)
     // TODO - send poll submission. we need the session first though
 
-    this.setState({pollChoiceId: null})
     return false;
   },
 
@@ -49,7 +52,7 @@ module.exports = React.createClass({
                         onChoiceChange={this.handleChoiceChange} />
     }.bind(this));
 
-    var disabled = this.state.pollChoiceId ? "" : "disabled"
+    var disabled = !this.state.pollChoiceId;
 
     return (
       <form className="poll-submission-form" onSubmit={this.handleSubmit}>
@@ -58,7 +61,7 @@ module.exports = React.createClass({
           {pollChoices}
         </ul>
         <div className="buttons">
-          <input type="submit" className={"button " + disabled} value="Submit Answer" />
+          <SubmitButton disabled={disabled}/>
         </div>
       </form>
     )
