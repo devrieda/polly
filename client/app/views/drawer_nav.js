@@ -36,10 +36,7 @@ module.exports = React.createClass({
     var submittedOpenSessions =  this.state.openedSessions.filter(function(session) {
       return session.hasSubmitted;
     });
-
-    var nonSubmittedOpenSessions = this.state.openedSessions.filter(function(session) {
-      return !session.hasSubmitted;
-    });
+    var nonSubmittedOpenSessions = $(this.state.openedSessions).not(submittedOpenSessions).get();
 
     submittedOpenSessions = submittedOpenSessions.map(function(session) {
       return <DrawerNavLink key={session.id} session={session} pollId={session.pollId} />
