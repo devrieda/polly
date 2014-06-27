@@ -4,14 +4,13 @@ var React = require('react');
 
 var Poll = require('../../models/poll');
 var PollChoice = require('../../models/poll_choice');
-
 var SubmitButton = require('../../components/submit_button');
-
 var PollSubmissionChoice = require('./poll_submission_choice');
+var Spinner = require('../../components/spinner.js');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return {poll: {question: "Loading..."},
+    return {poll: {},
             pollChoices: [{id: -1, text: ""},
                           {id: -2, text: ""}]};
   },
@@ -20,16 +19,11 @@ module.exports = React.createClass({
     if (!this.props.pollId) { return; }
 
     Poll.find(this.props.pollId, this, function(poll) {
-      if (this.isMounted()) {
-        this.setState({poll: poll});
-      }
+      PollChoice.all(this.props.pollId, this, function(choices) {
+        this.setState({poll: poll, pollChoices: choices});
+      });
     });
 
-    PollChoice.all(this.props.pollId, this, function(choices) {
-      if (this.isMounted()) {
-        this.setState({pollChoices: choices});
-      }
-    });
   },
 
   handleChoiceChange: function(value) {
@@ -47,7 +41,7 @@ module.exports = React.createClass({
     return false;
   },
 
-  render: function() {
+  createSubmissionForm: function() {
     var pollChoices = this.state.pollChoices.map(function(choice) {
       return <PollSubmissionChoice key={choice.id}
                                 pollId={this.props.pollId}
@@ -69,5 +63,14 @@ module.exports = React.createClass({
         </div>
       </form>
     )
+  },
+
+  createLoadingSpinner: function() {
+    return <Spinner />
+  },
+
+  render: function() {
+    var result = (!!this.state.poll.question)? this.createSubmissionForm() : this.createLoadingSpinner();
+    return result;
   }
 });

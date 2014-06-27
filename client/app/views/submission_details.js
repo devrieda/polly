@@ -13,8 +13,7 @@ module.exports = React.createClass({
       output = <NoPolls />
     } else {
       output = <PollSubmissionForm pollId={this.props.params.pollId}
-                                   sessionId={this.props.params.sessionId}
-                                   loaded={false}/>
+                                   sessionId={this.props.params.sessionId} />
     }
 
     return output
