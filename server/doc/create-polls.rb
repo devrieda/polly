@@ -19,6 +19,7 @@ sub.poll_id = poll.id
 sub.poll_choice_id = choice.id
 sub.user_id = student_user_id
 sub.save!
+sess.close!
 
 poll = Polling::Poll.create(question: "What movie is the greatest of all-time?")
 poll.user_id = teacher_user_id
@@ -36,10 +37,9 @@ sub.poll_id = poll.id
 sub.poll_choice_id = choice.id
 sub.user_id = student_user_id
 sub.save!
-
+sess.close!
 
 # ------------
-
 
 poll = Polling::Poll.create(question: "What soccer team is going to win the World Cup?")
 poll.user_id = teacher_user_id
