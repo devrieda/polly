@@ -1,5 +1,5 @@
 /** @jsx React.DOM */
-
+var $ = require('jquery');
 var React = require('react');
 var Router = require('react-nested-router').Router;
 var Link = require('react-nested-router').Link;
