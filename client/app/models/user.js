@@ -1,6 +1,7 @@
 var $ = require('jquery');
 var env = require('../../config/env');
-var ModelCacher = require('./model_cacher');
+
+var ModelCacher = require('../modules/model_cacher');
 
 var User;
 
