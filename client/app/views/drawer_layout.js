@@ -6,9 +6,8 @@ var Router = require('react-nested-router').Router;
 
 var Poll = require('../models/poll');
 
-var PollSubmissionForm = require('./poll_submission_form');
-var NoPolls = require('./no_polls');
 var DrawerNav = require('./drawer_nav');
+var SubmissionDetails = require('./submission_details');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -41,15 +40,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var submissionForm;
-    if (this.state.loaded && this.state.polls.length == 0) {
-      submissionForm = <NoPolls />
-    } else {
-      submissionForm = <PollSubmissionForm pollId={this.props.params.pollId}
-                                        sessionId={this.props.params.sessionId}
-                                           loaded={this.state.loaded} />
-    }
-
     return (
       <div className="drawer-layout">
         <div className={'drawer-content ' + this.state.drawer}>
@@ -64,7 +54,7 @@ module.exports = React.createClass({
             </header>
 
             <div className="content">
-              {submissionForm}
+              <SubmissionDetails params={this.props.params} />
             </div>
           </div>
         </div>

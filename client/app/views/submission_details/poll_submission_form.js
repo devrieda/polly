@@ -2,10 +2,10 @@
 
 var React = require('react');
 
-var Poll = require('../models/poll');
-var PollChoice = require('../models/poll_choice');
+var Poll = require('../../models/poll');
+var PollChoice = require('../../models/poll_choice');
 
-var SubmitButton = require('../components/submit_button');
+var SubmitButton = require('../../components/submit_button');
 
 var PollSubmissionChoice = require('./poll_submission_choice');
 
@@ -20,11 +20,15 @@ module.exports = React.createClass({
     if (!this.props.pollId) { return; }
 
     Poll.find(this.props.pollId, this, function(poll) {
-      this.setState({poll: poll});
+      if (this.isMounted()) {
+        this.setState({poll: poll});
+      }
     });
 
     PollChoice.all(this.props.pollId, this, function(choices) {
-      this.setState({pollChoices: choices});
+      if (this.isMounted()) {
+        this.setState({pollChoices: choices});
+      }
     });
   },
 
