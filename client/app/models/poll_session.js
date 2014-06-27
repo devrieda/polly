@@ -79,8 +79,8 @@ PollSession.closed = function(context, callback) {
   }
 }
 
-PollSession.find = function(pollSessionId, context, callback) {
-  var url = env.API_HOST + "/" + env.API_NAMESPACE + "/poll_sessions/" + pollSessionId;
+PollSession.find = function(pollId, pollSessionId, context, callback) {
+  var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_sessions/" + pollSessionId;
   if(cache.isValidFor(url)) {
     callback.call(context, transformer.transform(cache.cacheFor(url)));
   } else {
