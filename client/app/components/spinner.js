@@ -14,7 +14,7 @@ module.exports = React.createClass({
       barStyle.WebkitTransform = barStyle.transform =
         'rotate(' + (i * 30) + 'deg) translate(9.5px)';
       bars.push(
-        <div style={barStyle} className="spinner-bar" />
+        <div key={i} style={barStyle} className="spinner-bar" />
       );
     }
 

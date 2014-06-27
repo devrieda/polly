@@ -10,24 +10,21 @@ module.exports = React.createClass({
   render: function() {
     var output;
 
-    if (this.props.loaded)
+    if (this.props.loaded) {
       if (!this.props.params.pollId) {
         output = <NoPolls />
       } else {
         output = <PollSubmissionForm pollId={this.props.params.pollId}
                                      sessionId={this.props.params.sessionId} />
-      } else {
-        output = (
-          <div>
-            <div className='poll-submission-spinner'>
-            <Spinner />
-            </div>
-          </div>
-        )
+      }
+    } else {
+      output = (
+        <div className='poll-submission-spinner'>
+          <Spinner />
+        </div>
+      )
     }
-
-
-    return output
+    return output;
   }
 
 });
