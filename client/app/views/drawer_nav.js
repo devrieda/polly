@@ -15,19 +15,25 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
+    this.loadOpenPollSessions();
+  },
+  loadOpenPollSessions: function() {
     PollSession.opened(this, function(sessions) {
-      if (!this.props.pollId && sessions.length > 0) {
-        return Router.replaceWith('session', {
-          pollId: sessions[0].pollId, 
-          sessionId: sessions[0].id
-        });
+      if (!this.props.pollId && sessions[0]) {
+        return this.redirectToSession(sessions[0])
       }
-      this.setState({openedSessions: sessions});
-    });
 
+      this.setState({openedSessions: sessions});
+      this.loadClosedPollSessions();
+    });
+  },
+  loadClosedPollSessions: function() {
     PollSession.closed(this, function(sessions) {
       this.setState({closedSessions: sessions});
     });
+  },
+  redirectToSession: function(session) {
+    Router.replaceWith('session', {pollId: session.pollId, sessionId: session.id});
   },
 
   render: function() {
