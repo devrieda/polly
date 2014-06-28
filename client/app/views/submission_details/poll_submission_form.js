@@ -5,8 +5,9 @@ var React = require('react');
 var PollSubmission = require('../../models/poll_submission');
 
 var SubmitButton = require('../../components/submit_button');
-var PollSubmissionChoice = require('./poll_submission_choice');
 var Spinner = require('../../components/spinner.js');
+var RadioGroup = require('../../components/radio_group');
+var RadioButton = require('../../components/radio_button');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -33,22 +34,19 @@ module.exports = React.createClass({
   },
 
   createSubmissionForm: function() {
-    var pollChoices = this.props.choices.map(function(choice) {
-      return <PollSubmissionChoice key={choice.id}
-                                pollId={this.props.pollId}
-                            choiceText={choice.text}
-                              choiceId={choice.id}
-                        onChoiceChange={this.handleChoiceChange} />
-    }.bind(this));
 
     var disabled = !this.state.pollChoiceId;
+
+    var pollChoices = this.props.choices.map(function(choice) {
+      return <RadioButton className='poll-choice' label={choice.text} value={choice.id} />
+    }.bind(this));
 
     return (
       <form className="poll-submission-form" onSubmit={this.handleSubmit}>
         <h2>{this.props.poll.question}</h2>
-        <ul className="poll-choices">
+        <RadioGroup className='poll-choices' onChange={this.handleChoiceChange}>
           {pollChoices}
-        </ul>
+        </RadioGroup>
         <div className="buttons">
           <SubmitButton disabled={disabled}/>
         </div>

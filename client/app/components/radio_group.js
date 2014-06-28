@@ -20,6 +20,7 @@ module.exports = React.createClass({
     React.Children.forEach(this.props.children, function(child) {
       var isSelected = (this.state.selectedValue === child.props.value);
       child.props.onSelect = this.handleItemSelect;
+      child.props.key = child.props.value
       if (isSelected !== child.props.selected) {
         child.props.selected = isSelected;
         if (child.isMounted())
@@ -30,8 +31,12 @@ module.exports = React.createClass({
 
   render: function() {
     this.decorateChildren();
+    var cName = 'radio-group';
+    if (this.props.className) {
+      cName += (' ' + this.props.className);
+    }
     return (
-      <div className='radio-group'>
+      <div className={cName}>
         {this.props.children}
       </div>
     )

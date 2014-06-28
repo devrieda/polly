@@ -2,19 +2,6 @@
 
 var React = require('react');
 
-/*
- * Should have
- *  states:
- *    disabled
- *    selected
- *
- *  props:
- *    label
- *    value
- *
- */
-
-
 module.exports = React.createClass({
 
   handleClick: function() {
@@ -27,10 +14,9 @@ module.exports = React.createClass({
     var indicatorClass = 'radio-button';
     indicatorClass += (this.props.selected)? ' selected' : '';
     indicatorClass += (this.props.disabled)? ' disabled' : '';
+    indicatorClass += (this.props.className)? (' ' + this.props.className) : '';
     return (
       <div className={indicatorClass} onClick={this.handleClick}>
-        <div className='radio-indicator'>
-        </div>
         <div className='radio-label'>
           {this.props.label}
         </div>
