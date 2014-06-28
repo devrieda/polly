@@ -17,10 +17,10 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var is_available = !this.props.session.hasSubmitted ? 'available' : ''
-    var is_shared = (this.props.session.hasPublicResults && this.props.session.isPublished) ? 'shared' : ''
+    var isAvailable = !this.props.session.hasSubmitted ? 'available' : ''
+    var isShared = (this.props.session.hasPublicResults && !this.props.session.isPublished) ? 'shared' : ''
 
-    var classes = [is_available, is_shared].join(' ');
+    var classes = [isAvailable, isShared].join(' ');
     return (
       <li className={classes}>
         <Link to="session" pollId={this.props.pollId}
