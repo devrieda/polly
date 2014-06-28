@@ -5,7 +5,7 @@ var React = require('react');
 module.exports = React.createClass({
 
   handleClick: function() {
-    if (this.props.onSelect && !this.props.disabled) {
+    if (this.props.onSelect && !this.props.disabled && !this.props.readonly) {
       this.props.onSelect(this.props.value);
     }
   },
@@ -14,11 +14,12 @@ module.exports = React.createClass({
     var indicatorClass = 'radio-button';
     indicatorClass += (this.props.selected)? ' selected' : '';
     indicatorClass += (this.props.disabled)? ' disabled' : '';
+    indicatorClass += (this.props.readonly)? ' readonly' : '';
     indicatorClass += (this.props.className)? (' ' + this.props.className) : '';
     return (
       <div className={indicatorClass} onClick={this.handleClick}>
         <div className='radio-label'>
-          {this.props.label}
+          {this.props.label}&nbsp;
         </div>
       </div>
     )

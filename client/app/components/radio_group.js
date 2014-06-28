@@ -18,13 +18,16 @@ module.exports = React.createClass({
 
   decorateChildren: function() {
     React.Children.forEach(this.props.children, function(child) {
-      var isSelected = (this.state.selectedValue === child.props.value);
+      var isSelected = (this.state.selectedValue === child.props.value) ||
+                       (this.props.value === child.props.value);
       child.props.onSelect = this.handleItemSelect;
-      child.props.key = child.props.value
+      child.props.readonly = this.props.readonly;
+      child.props.key = child.props.value;
       if (isSelected !== child.props.selected) {
         child.props.selected = isSelected;
-        if (child.isMounted())
-          child.forceUpdate();
+        // this is throwing errors for me
+        // if (child.isMounted())
+        //   child.forceUpdate();
       }
     }.bind(this));
   },
