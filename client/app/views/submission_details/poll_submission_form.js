@@ -6,11 +6,13 @@ var PollSession = require('../../models/poll_session');
 var PollSubmission = require('../../models/poll_submission');
 var Poll = require('../../models/poll');
 var PollChoice = require('../../models/poll_choice');
+var PollSession = require('../../models/poll_session');
 
 var SubmitButton = require('../../components/submit_button');
 var Spinner = require('../../components/spinner.js');
 var RadioGroup = require('../../components/radio_group');
 var RadioButton = require('../../components/radio_button');
+var Router = require('react-nested-router').Router;
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -63,7 +65,9 @@ module.exports = React.createClass({
     submission.pollId = this.state.poll.id;
     submission.pollSessionId = this.state.session.id;
     submission.pollChoiceId = this.state.submission.pollChoiceId;
+
     submission.save(this, function(pollSubmission) {
+      PollSession.flushCache();
       this.setState({submission: pollSubmission, saving: false, complete: true});
     });
 

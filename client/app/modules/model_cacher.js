@@ -42,6 +42,10 @@ ModelCacher.prototype.flushCache = function() {
   this.cache = {};
 };
 
+ModelCacher.prototype.flushCacheFor = function(url) {
+  this.cache[url] = undefined;
+};
+
 
 
 module.exports = ModelCacher;

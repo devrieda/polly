@@ -116,4 +116,13 @@ PollSession.find = function(pollSessionId, pollId, context, callback) {
   }
 }
 
+PollSession.flushCache = function() {
+  cache.flushCache();
+}
+
+PollSession.flushCacheFor = function(pollSessionId, pollId) {
+  var url = env.API_HOST + "/" + env.API_NAMESPACE + "/polls/" + pollId + "/poll_sessions/" + pollSessionId;
+  cache.flushCacheFor(url);
+}
+
 module.exports = PollSession;
