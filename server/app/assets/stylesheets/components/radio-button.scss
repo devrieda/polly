@@ -3,12 +3,18 @@
   background: url("/assets/icons/radio.png") 10px center no-repeat;
   background-size: 15px 15px;
   cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 10px;
+
+  &.readonly {
+    background: url("/assets/icons/radio.png") 10px center no-repeat;
+    background-size: 15px 15px;
+    opacity: 0.5;
+    cursor: default;
+  }
 
   &.selected {
     background: url("/assets/icons/radio-filled.png") 10px center no-repeat;
     background-size: 15px 15px;
+    opacity: 1.0;
   }
 
   &.disabled {

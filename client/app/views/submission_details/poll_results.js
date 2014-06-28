@@ -6,9 +6,11 @@ var PollResultsChoice = require('./poll_results_choice');
 
 module.exports = React.createClass({
   render: function() {
+    var submission = this.props.session.pollSubmission;
     var pollChoices = this.props.choices.map(function(choice) {
       return <PollResultsChoice key={choice.id}
                          choiceText={choice.text}
+                           selected={submission.pollChoiceId == choice.id}
                            choiceId={choice.id} />
     }.bind(this));
 

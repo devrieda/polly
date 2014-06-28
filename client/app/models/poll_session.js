@@ -6,6 +6,7 @@ var ModelCacher = require('../modules/model_cacher');
 var ModelTransformer = require('../modules/model_transformer');
 
 var Poll = require('./poll');
+var PollSubmission = require('./poll_submission');
 
 var cache = new ModelCacher(5);
 
@@ -35,7 +36,16 @@ var transformer = new ModelTransformer(PollSession, {
   is_published: 'isPublished',
   created_at: 'createdAt',
   has_submitted: 'hasSubmitted',
-  has_public_results: 'hasPublicResults'
+  has_public_results: 'hasPublicResults',
+  poll_submissions: 'pollSubmissions', 
+  poll_submission: 'pollSubmission'
+});
+var subTransformer = new ModelTransformer(PollSubmission, {
+  id: 'id',
+  poll_choice_id: 'pollChoiceId',
+  poll_session_id: 'pollSessionId',
+  user_id: 'userId',
+  created_at: 'createdAt'
 });
 
 PollSession.opened = function(context, callback) {
@@ -90,8 +100,13 @@ PollSession.find = function(pollSessionId, pollId, context, callback) {
       contentType: 'application/json',
       url: url,
       success: function(data) {
-        cache.cacheResults(url, data['poll_sessions'][0]);
-        callback.call(context, transformer.transform(data['poll_sessions'][0]));
+        var session = data['poll_sessions'][0];
+        var submission = session['poll_submissions'][0];
+        if (submission) {
+          session['poll_submission'] = subTransformer.transform(submission)
+        }
+        cache.cacheResults(url, session);
+        callback.call(context, transformer.transform(session));
       }.bind(this),
 
       error: function(xhr, status, err) {

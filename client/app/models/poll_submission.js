@@ -15,11 +15,13 @@ var PollSubmission = function() {
   this.createdAt = '';
 }
 
-var transformer = new ModelTransformer(PollSubmission, { id: 'id',
-                                                         poll_choice_id: 'pollChoiceId',
-                                                         poll_session_id: 'pollSessionId',
-                                                         user_id: 'userId',
-                                                         created_at: 'createdAt'});
+var transformer = new ModelTransformer(PollSubmission, { 
+  id: 'id',
+  poll_choice_id: 'pollChoiceId',
+  poll_session_id: 'pollSessionId',
+  user_id: 'userId',
+  created_at: 'createdAt'
+});
 
 PollSubmission.find = function(pollId, pollSessionId, pollSubmissionId, context, callback) {
   var url = env.API_HOST + "/" + env.API_NAMESPACE +
