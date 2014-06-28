@@ -8,6 +8,7 @@ var PollSession = require('../models/poll_session');
 
 var UserProfile = require('./user_profile');
 var DrawerNavLink = require('./drawer_nav_link');
+var eventBus = require('../modules/event_bus');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -15,8 +16,18 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
+    eventBus.on('sessions:change', this, this.reloadSessions);
     this.loadOpenPollSessions();
   },
+
+  componentWillUnmount: function() {
+    eventBus.off('sessions:change', this, this.reloadSessions);
+  },
+
+  reloadSessions: function() {
+    this.loadOpenPollSessions();
+  },
+
   loadOpenPollSessions: function() {
     PollSession.opened(this, function(sessions) {
       if (!this.props.pollId && sessions[0]) {

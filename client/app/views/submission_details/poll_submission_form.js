@@ -13,6 +13,7 @@ var Spinner = require('../../components/spinner.js');
 var RadioGroup = require('../../components/radio_group');
 var RadioButton = require('../../components/radio_button');
 var Router = require('react-nested-router').Router;
+var eventBus = require('../../modules/event_bus');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -68,6 +69,7 @@ module.exports = React.createClass({
 
     submission.save(this, function(pollSubmission) {
       PollSession.flushCache();
+      eventBus.trigger('sessions:change');
       this.setState({submission: pollSubmission, saving: false, complete: true});
     });
 
