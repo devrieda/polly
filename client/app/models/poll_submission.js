@@ -37,8 +37,8 @@ PollSubmission.find = function(pollId, pollSessionId, pollSubmissionId, context,
       contentType: 'application/json',
       url: url,
       success: function(data) {
-        cache.cacheResults(url, data['poll_sessions'][0]);
-        callback.call(context, transformer.transform(data['poll_sessions'][0]));
+        cache.cacheResults(url, data['poll_submissions'][0]);
+        callback.call(context, transformer.transform(data['poll_submissions'][0]));
       }.bind(this),
 
       error: function(xhr, status, err) {
@@ -66,7 +66,7 @@ PollSubmission.prototype.save = function(context, callback) {
 
 
     success: function(data) {
-      callback.call(context, data);
+      callback.call(context, transformer.transform(data['poll_submissions'][0]));
     },
 
     error: function(xhr, status, err) {
