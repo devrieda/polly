@@ -2,6 +2,11 @@ teacher_user_id = 1
 student_user_id = 1
 course_id = 1
 
+Polling::Poll.destroy_all()
+Polling::PollChoice.destroy_all()
+Polling::PollSession.destroy_all()
+Polling::PollSubmission.destroy_all()
+
 poll = Polling::Poll.create(question: "What are you going to get on the final?")
 poll.user_id = teacher_user_id
 poll.save!
@@ -47,7 +52,7 @@ poll.save!
 poll.poll_choices.create(:text => "Ghana", :position => 1, :is_correct => false)
 choice = poll.poll_choices.create(:text => "USA", :position => 2, :is_correct => true)
 poll.poll_choices.create(:text => "Portugal", :position => 3, :is_correct => false)
-poll.poll_choices.create(:text => "Englad", :position => 4, :is_correct => false)
+poll.poll_choices.create(:text => "England", :position => 4, :is_correct => false)
 sess = poll.poll_sessions.new(:course_id => course_id)
 sess.has_public_results = false
 sess.is_published = true
