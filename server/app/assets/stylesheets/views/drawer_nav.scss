@@ -72,6 +72,13 @@
       cursor: default;
     }
   }
+  .nav-return-link {
+    position: fixed;
+    bottom: 10px;
+    left: 120px;
+    font-size: 0.8em;
+    text-align: right;
+  }
   .question {
     float: left;
     width: 160px;

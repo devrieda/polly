@@ -9,6 +9,7 @@ var PollSession = require('../models/poll_session');
 var UserProfile = require('./user_profile');
 var DrawerNavLink = require('./drawer_nav_link');
 var eventBus = require('../modules/event_bus');
+var env = require('../../config/env.js');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -82,6 +83,9 @@ module.exports = React.createClass({
         <ul className="nav-polls closed">
           {closedSessions}
         </ul>
+        <div className='nav-return-link'>
+          <a href={env.launch_presentation_return_url}>Return to Canvas</a>
+        </div>
       </nav>
     )
   }
