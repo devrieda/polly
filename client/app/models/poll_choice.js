@@ -10,9 +10,11 @@ var PollChoice = function() {
   this.id = '';
   this.position = '';
   this.text = '';
+  this.isCorrect = '';
 }
 var transformer = new ModelTransformer(PollChoice, { id: 'id',
                                                      position: 'position',
+                                                     is_correct: 'isCorrect',
                                                      text: 'text' });
 
 PollChoice.all = function(pollId, context, callback) {

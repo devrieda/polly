@@ -1,4 +1,10 @@
+.poll-choice-container {
+  position: relative;
+}
+
 .poll-choices {
+  position: relative;
+  z-index: 2;
   border-bottom: 1px solid $light-grey;
   padding: 0;
   margin-bottom: 20px;
@@ -6,15 +12,16 @@
 }
 .poll-choice {
   border-top: 1px solid $light-grey;
-  padding: 20px 0;
-
-  label {
-    display: block;
-  }
-  input[type=radio] {
-    margin-right: 17px;
-  }
+  padding: 18px 0;
 }
+.public .poll-choices {
+  border-bottom: 1px solid $white;
+}
+.public .poll-choice {
+  border-top: 1px solid $white;
+}
+
 .poll-submission-spinner {
   margin-top: 50px;
 }
+

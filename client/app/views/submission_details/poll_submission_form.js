@@ -81,6 +81,25 @@ module.exports = React.createClass({
       <div className='poll-submission-spinner'><Spinner /></div>
     )
   },
+
+  createPollResults: function() {
+    if (!this.state.session.hasPublicResults) { return ''; }
+
+    var percents = this.state.session.resultPercentages();
+    var pollResults = this.state.choices.map(function(choice) {
+      return (
+        <li key={choice.id} className={choice.isCorrect ? 'correct' : ''}>
+          <div className="text">{percents[choice.id]}%</div>
+          <div className="bar" style={{width: percents[choice.id] + "%"}}>
+            &nbsp;
+          </div>
+        </li>
+      )
+    }.bind(this));
+
+    return <ul className="poll-results">{pollResults}</ul>
+  },
+
   createSubmissionForm: function() {
     var pollChoices = this.state.choices.map(function(choice) {
       return <RadioButton className='poll-choice'
@@ -89,15 +108,21 @@ module.exports = React.createClass({
                                 key={choice.id} />
     }.bind(this));
 
+    var public = this.state.session.hasPublicResults ? 'public' : '';
+
     return (
       <form className="poll-submission-form" onSubmit={this.handleSubmit}>
         <h2>{this.state.poll.question}</h2>
-        <RadioGroup className='poll-choices'
-                     onChange={this.handleChoiceChange}
-                     readonly={this.state.submission.id}
-                        value={this.state.submission.pollChoiceId}>
-          {pollChoices}
-        </RadioGroup>
+        <div className={"poll-choice-container " + public}>
+          <RadioGroup className="poll-choices"
+                       onChange={this.handleChoiceChange}
+                       readonly={this.state.submission.id}
+                          value={this.state.submission.pollChoiceId}>
+            {pollChoices}
+          </RadioGroup>
+
+          {this.createPollResults()}
+        </div>
 
         <SubmitButton disabled={!this.state.submission.pollChoiceId}
                       loading={this.state.saving}

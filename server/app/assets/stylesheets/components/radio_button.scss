@@ -7,14 +7,12 @@
   &.readonly {
     background: url("/assets/icons/radio.png") 10px center no-repeat;
     background-size: 15px 15px;
-    opacity: 0.5;
     cursor: default;
   }
 
   &.selected {
     background: url("/assets/icons/radio-filled.png") 10px center no-repeat;
     background-size: 15px 15px;
-    opacity: 1.0;
   }
 
   &.disabled {
@@ -25,4 +23,10 @@
   .radio-label {
     margin-left: 35px;
   }
+}
+.radio-button.readonly div {
+    opacity: 0.5;
+}
+.radio-button.selected div {
+    opacity: 1.0;
 }

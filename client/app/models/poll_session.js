@@ -37,7 +37,8 @@ var transformer = new ModelTransformer(PollSession, {
   created_at: 'createdAt',
   has_submitted: 'hasSubmitted',
   has_public_results: 'hasPublicResults',
-  poll_submissions: 'pollSubmissions', 
+  results: 'results',
+  poll_submissions: 'pollSubmissions',
   poll_submission: 'pollSubmission'
 });
 var subTransformer = new ModelTransformer(PollSubmission, {
@@ -114,6 +115,21 @@ PollSession.find = function(pollSessionId, pollId, context, callback) {
       }
     });
   }
+}
+
+PollSession.prototype.resultPercentages = function() {
+  var sum = 0;
+  for (var key in this.results) {
+    if (!this.results.hasOwnProperty(key)) { return; }
+    sum += parseFloat(this.results[key]);
+  }
+
+  var perc = {};
+  for (var key in this.results) {
+    if (!this.results.hasOwnProperty(key)) { return; }
+    perc[key] = Math.round( (this.results[key] / sum) * 10000 ) / 100;
+  }
+  return perc;
 }
 
 PollSession.flushCache = function() {
