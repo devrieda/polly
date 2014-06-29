@@ -32,7 +32,8 @@ module.exports = React.createClass({
   loadOpenPollSessions: function() {
     PollSession.opened(this, function(sessions) {
       if (!this.props.pollId && sessions[0]) {
-        return this.redirectToSession(sessions[0])
+        var notSubmitted = sessions.filter(function(s) { return !s.hasSubmitted });
+        return this.redirectToSession(notSubmitted[0] || sessions[0])
       }
 
       this.setState({openedSessions: sessions});
