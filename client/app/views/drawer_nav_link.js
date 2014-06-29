@@ -29,7 +29,7 @@ module.exports = React.createClass({
             {this.state.poll.question}
           </span>
           <span className="date">
-            {moment(this.props.session.createdAt).fromNow()}
+            {moment(this.props.session.createdAt).format('M/D/YYYY')}
           </span>
         </Link>
       </li>

@@ -72,13 +72,7 @@
       cursor: default;
     }
   }
-  .nav-return-link {
-    position: fixed;
-    bottom: 10px;
-    left: 120px;
-    font-size: 0.8em;
-    text-align: right;
-  }
+
   .question {
     float: left;
     width: 160px;
@@ -99,5 +93,23 @@
   .shared a {
     background: url("/assets/icons/chart.png") 10px center no-repeat;
     background-size: 12px 11px;
+  }
+
+  .nav-return-link {
+    a {
+      padding: 0 10px 0 24px;
+      background: url("/assets/icons/exit.png") 10px center no-repeat;
+      background-size: 12px 12px;
+
+      &:hover {
+        background: url("/assets/icons/exit-white.png") 10px center no-repeat;
+        background-size: 12px 12px;
+      }
+    }
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    font-size: 0.8em;
+    text-align: right;
   }
 }
